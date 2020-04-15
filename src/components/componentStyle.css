@@ -6,3 +6,16 @@
     box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
+  .toast-sender{
+      background-color: aqua;
+  }
+  .toast-receiver{
+      background-color: aquamarine;
+  }
+
+  .message-box{
+    bottom: 0;
+    width: 100%;
+    margin: 50;
+
+  }

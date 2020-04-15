@@ -37,6 +37,7 @@ export const Helper = {
     getfollowerUrl : BASE_URL + 'follower/?follower=',
     unfollowUserUrl: BASE_URL + 'unflwuser',
     avatarUploadUrl: BASE_URL + 'userimg',
+    messageUrl : BASE_URL + 'messages/',
     localURL: LOCAL_URL,
     authtype : 'Token ',
 }

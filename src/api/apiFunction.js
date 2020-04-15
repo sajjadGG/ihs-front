@@ -97,3 +97,42 @@ export const addFollower = async({followee})=>{
     .catch(error => console.log('error', error));
     return data;
 }
+
+export const getMessage = async({sender , receiver})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+
+
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.messageUrl+"?sender="+sender+"&"+"receiver="+receiver, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
+
+export const postMessage = async({sender , receiver,text})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+
+    var formdata = new FormData();
+    formdata.append("sender", sender);
+    formdata.append("receiver", receiver);
+    formdata.append("text", text);
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body : formdata,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.messageUrl, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}

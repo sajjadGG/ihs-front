@@ -17,12 +17,16 @@ async function onFollow(e){
     const check = await addFollower({followee : user});
 }
 
+function onMessage(e){
+    props.history.push(`/message/${JSON.parse(localStorage.getItem('user')).username}/${user}`)
+}
+
 return(
-    <div className='col-md-4'style={{margin:'15px 0' , padding:'0px 200px 0 0'}} onClick={click}>
+    <div className='col-md-4'style={{margin:'15px 0' , padding:'0px 200px 0 0'}}>
         <div className="profile-card-1 card" style={{width:"18rem"}}>
             {/*<img className="card-img-top" src={avatar} alt={name}/>*/}
             <img className="card-img-top" src={avatar} alt={name} style={{height:'250px'}}/>
-            <div className="card-body">
+            <div className="card-body"  onClick={click}>
                 <h5 className="card-title">{speciality}</h5>
                 <p className="card-text">{medicalCouncilId}</p>
             </div>
@@ -31,6 +35,10 @@ return(
             </ul>
             <div className="card-body">
                 <button  className="btn-primary" onClick={onFollow}>follow</button>
+                {/*<a href="#" className="card-link">Another link</a>*/}
+            </div>
+            <div className="card-body">
+                <button  className="btn-success" onClick={onMessage}>message</button>
                 {/*<a href="#" className="card-link">Another link</a>*/}
             </div>
         </div>
