@@ -1,3 +1,3 @@
 # Front-ihs
 
-Front whit React js
+Front with React js
