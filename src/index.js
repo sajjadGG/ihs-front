@@ -12,6 +12,7 @@ import SearchDoctorPages from "./PatientPages/serachDoctor/searchDoctorPages";
 import DoctorPage from "./doctorPage/doctorPage";
 import CustomNavbar from "./components/Navbar";
 import MessageRoom from "./components/MessageRoom";
+import AppointmentHistory from "./PatientPages/AppointmentHistory"
 import './style.css'
 
 
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
+            <Route exact path='/app' component={AppointmentHistory}/>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,
