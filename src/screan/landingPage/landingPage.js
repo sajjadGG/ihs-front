@@ -13,7 +13,18 @@ class LandingPage extends React.Component{
         this.patientLogin = React.createRef();
         this.state={
             scroll:0,
+            userName:"",
+            password:"",
+
         };
+    };
+
+    //create toggle function for input modal
+    toggleUserName=(userName)=>{
+       this.setState({...this.state,userName:userName.target.value});
+    };
+    togglePassword=(password)=>{
+        this.setState({...this.state,password:password.target.value});
     };
     onClickDoctorBtn=()=>{
         const modalDoctorLogin = this.doctorLogin.current.classList;
@@ -96,13 +107,14 @@ class LandingPage extends React.Component{
                 <div onClick={this.onClickExitFormPatient} className='exit-btn-form'>x</div>
                 <div className='container-form-item'>
                     <div className='items-form'>
-                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required/>
+                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required onChange={(e)=>this.toggleUserName(e)} value={this.state.userName}/>
                         <label htmlFor="name" className="form__label">نام کاربری</label>
                     </div>
                     <div className='items-form'>
-                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required/>
+                        <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.value} onChange={(e)=>this.togglePassword(e)}/>
                         <label htmlFor="name" className="form__label">رمز عبور</label>
                     </div>
+                    <button className='login-btn'>ورود</button>
 
                 </div>
 

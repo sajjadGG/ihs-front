@@ -165,5 +165,27 @@
     color: #11998e;
     font-weight: 700;
 }
+.login-btn{
+    margin: 15px;
+    padding: 10px 20px;
+    background-image: linear-gradient(to right, #11998e, #38ef7d);
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+}
+.login-btn:hover{
+    animation: 1s btn-scale forwards;
+    outline: none;
+}
+@keyframes btn-scale {
+    0%{}
+    50%{
+        transform: scaleX(2);
+    }
+    100%{
+        transform: scaleX(1);
+    }
 
+}
 
