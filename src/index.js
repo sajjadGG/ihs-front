@@ -14,6 +14,7 @@ import CustomNavbar from "./components/Navbar";
 import MessageRoom from "./components/MessageRoom";
 import './style.css'
 import AppointmentPicker from "./components/AppointmentPicker"
+import SimpleMap from "./components/LocationPicker"
 
 const store = createStore(combineReducers(Reducer));
 
@@ -25,7 +26,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
-            <Route exact path='/test' component={AppointmentPicker}/>
+            <Route exact path='/test' component={SimpleMap}/>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,
