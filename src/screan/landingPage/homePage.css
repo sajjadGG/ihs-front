@@ -1,0 +1,60 @@
+.container{
+    /*margin: 20px;*/
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+/*white-space*/
+.white-space{
+    height: 500px;
+    width: 100%;
+    /*background-color: greenyellow;*/
+}
+.container-items-show{
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img-show{
+    margin: 0 auto;
+    animation: hideImgae 2s forwards;
+}
+@keyframes hideImgae {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.img-show img{
+    width: 90%;
+    height: auto;
+}
+.show{
+    animation: showImage 2s forwards;
+}
+@keyframes showImage {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+.login-ways{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.login-ways button{
+    min-width: 60px;
+    padding: 10px;
+}
