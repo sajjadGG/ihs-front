@@ -48,7 +48,9 @@ class LandingPage extends React.Component{
             await setLoginData(dataLogin);
             setTimeout(()=>{
                 this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
-                // this.props.history.push("/searchDoctor");
+                if(dataLogin.type==="patient"){
+                    this.props.history.push("/profielpatient");
+                }
             },2500);
         }
         else {
@@ -104,7 +106,7 @@ class LandingPage extends React.Component{
     // componentWillUnmount() {
     //     window.removeEventListener('scroll', this.onChangeHome);
     // }
-    scrollHandel=(e)=>{
+    scrollHandel=()=>{
         const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
         const scrollTop = this.myRef.current.scrollTop;
 // const scroll =window.pageYOffset;

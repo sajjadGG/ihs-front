@@ -13,6 +13,7 @@ import DoctorPage from "./doctorPage/doctorPage";
 import CustomNavbar from "./components/Navbar";
 import MessageRoom from "./components/MessageRoom";
 import './style.css'
+import ProfilePatient from "./screan/Patient/profile/profilePatient";
 
 
 const store = createStore(combineReducers(Reducer));
@@ -25,6 +26,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
+            <Route exact path='/profielpatient' component={ProfilePatient}/>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,

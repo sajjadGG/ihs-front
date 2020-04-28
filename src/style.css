@@ -2,6 +2,9 @@
     width: auto!important;
 }
 body{
+    direction: rtl;
+    margin: 20px;
+    font-family: bn;
 
 }
 @font-face {

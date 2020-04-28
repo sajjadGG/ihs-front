@@ -1,0 +1,150 @@
+.container-mainPage{
+    display: flex;
+    flex-direction: column;
+}
+.header-mainPage{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.items-header-mainPage {
+    font-size:30px;
+    color:gray;
+    margin: 20px;
+    border: 0;
+    transition: 2s;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+.items-header-mainPage:hover {
+    animation: activatorAnime 1s forwards;
+}
+@keyframes activatorAnime {
+    0%{
+        color: #45444c;
+
+    }
+    100%{
+        color: #45444c;
+        box-shadow: 2px 3px 4px grey;
+    }
+}
+.items-header-mainPage i{
+}
+.items-header-mainPage span{
+    margin-right: 10px;
+}
+/*!*style for anime*/
+.active-item{
+    animation: active 1s forwards;
+    background-image: linear-gradient(rgba(198, 174, 199, 0.2),rgba(198, 180, 199, 0.2),rgba(198, 185, 200, 0.3));
+    /*box-shadow: 2px 3px 4px grey;*/
+}
+@keyframes active {
+    0%{}
+    100%{
+        color: #45444c;
+    }
+}
+.event{
+    font-size: 1em;
+}
+.event:hover{
+animation: eventReact 2s forwards infinite;
+}
+@keyframes eventReact {
+    0%{
+        transform: rotate(7deg);
+    }
+    50%{
+        transform: rotate(0deg);
+
+    }
+    100%{
+        transform: rotate(-10deg);
+    }
+}
+
+
+.container-info-mainPage{
+    width: 80%;
+    margin: 0 auto;
+    /*height: 500px;*/
+    border-top: 1px solid black;
+}
+
+.my-page-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+.container-info-patient{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+.my-page-info .avatar{
+    margin: 20px;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+.my-page-info input{
+    outline: none;
+    text-align: center;
+    color: black;
+    margin: 20px 0;
+    border: 0 !important;
+    font-size: 1.5em;
+    border-bottom: 1px solid cadetblue !important;
+
+    transition: 1s all;
+}
+.my-page-info input.fixed{
+    pointer-events: none;
+    border: 0 !important;
+    color: black;
+    font-size: 1.5em;
+    padding-bottom: 1px;
+}
+.my-page-info input.fixed::placeholder{
+    text-align: center;
+    color: black;
+    font-size: 1.5em;
+}
+.test{position: relative;
+}
+.editable{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    cursor: pointer;
+
+}
+.event{
+    cursor: pointer;
+}
+
+
+/*todo:check it */
+.nothing-show i {
+    color: grey;
+    font-size: 4em;
+    margin: 20px;
+}
+.doctor-document-info{
+    text-align: center;
+    min-height: 400px;
+    justify-content: center;
+    color: #434343;
+}
