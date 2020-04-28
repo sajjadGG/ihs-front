@@ -3,6 +3,12 @@ import './homePage.css';
 import './loginModal.css';
 import IMG from '../../assets/image/log2.jpg'
 import MouseDown from "../components/mouseScroll/mouseDown";
+import Sucses from "../components/infoComponent/sucses";
+import {signUp,login} from '../../api/apiFunction';
+import {setLoginData} from '../../functions/saveDataLocalStorage/localStorageFunction';
+import WrongInfo from "../components/infoComponent/wrongInfo";
+import { withRouter } from "react-router-dom";
+
 class LandingPage extends React.Component{
 
 
@@ -11,11 +17,18 @@ class LandingPage extends React.Component{
         this.myRef = React.createRef();
         this.doctorLogin = React.createRef();
         this.patientLogin = React.createRef();
+        this.container= React.createRef();
         this.state={
             scroll:0,
             userName:"",
             password:"",
 
+        //  todo:check it
+            showAlertSuccess:false,
+            showAlertSuccessText:"",
+
+            showAlertWrong:false,
+            showAlertWrongText:"",
         };
     };
 
@@ -25,6 +38,27 @@ class LandingPage extends React.Component{
     };
     togglePassword=(password)=>{
         this.setState({...this.state,password:password.target.value});
+    };
+    toggleLoginBtn= async ()=>{
+        const dataLogin = await login({username:this.state.userName,password:this.state.password});
+       // console.log('dataLogin');
+        console.log(dataLogin);
+        if(dataLogin.token){
+            this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
+            await setLoginData(dataLogin);
+            setTimeout(()=>{
+                this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
+                // this.props.history.push("/searchDoctor");
+            },2500);
+        }
+        else {
+            this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:`خطا`});
+            setTimeout(()=>{
+                this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:""});
+            },2500);
+        }
+
+
     };
     onClickDoctorBtn=()=>{
         const modalDoctorLogin = this.doctorLogin.current.classList;
@@ -114,7 +148,7 @@ class LandingPage extends React.Component{
                         <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.value} onChange={(e)=>this.togglePassword(e)}/>
                         <label htmlFor="name" className="form__label">رمز عبور</label>
                     </div>
-                    <button className='login-btn'>ورود</button>
+                    <button className='login-btn' onClick={this.toggleLoginBtn}>ورود</button>
 
                 </div>
 
@@ -123,7 +157,7 @@ class LandingPage extends React.Component{
 
         return (
             // <div className='container'     ref={this.myRef} onScroll={this.scrollHandel}>
-            <div className='container'   onScroll={this.scrollHandel}>
+            <div className='container'   onScroll={this.scrollHandel} ref={this.container}>
                 <MouseDown/>
                 <div className='white-space'/>
 
@@ -138,6 +172,10 @@ class LandingPage extends React.Component{
                 </div>
                 {showLoginDoctor}
                 {showLoginPatient}
+
+                <Sucses textInfo={this.state.showAlertSuccessText} className={this.state.showAlertSuccess?'show-alert ':' hide-alert '}/>
+                <WrongInfo textInfo={this.state.showAlertWrongText} className={this.state.showAlertWrong?'show-alert':'hide-alert'}/>
+
             </div>
         );
     }
@@ -145,4 +183,4 @@ class LandingPage extends React.Component{
 
 }
 
-export default LandingPage;
+export default withRouter(LandingPage);

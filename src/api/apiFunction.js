@@ -40,7 +40,7 @@ export const login = async ({username , password , email , full_name}) =>{
     .then(response => response.json())
     .catch(error => console.log('error', error));
     return data
-}
+};
 
 
 export const getuserData = async({username})=>{
