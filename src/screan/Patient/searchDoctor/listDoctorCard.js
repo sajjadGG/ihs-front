@@ -11,12 +11,14 @@ class ListDoctorCard extends Component{
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props !== prevProps) {
             const newPost=[];
+            console.log('this.props');
             console.log(this.props);
             this.props.datas.forEach((itm)=>{
                 console.log(itm);
                 newPost.push(
-                    <div className="col-md-4" key={itm.userId}>
-                        <DoctorCard medicalCouncilId={itm.medicalCouncilId} name={itm.userfullname} key={itm.userId} id={itm.userId} avatar={itm.avatar} user={itm.user} speciality={itm.speciality}/>
+                    <div className="" key={itm.userId}>
+                        <DoctorCard  name={itm.userfullname} avatar={itm.avatar} speciality={itm.speciality}/>
+                        {/*<DoctorCard medicalCouncilId={itm.medicalCouncilId} name={itm.userfullname} key={itm.userId} id={itm.userId} avatar={itm.avatar} user={itm.user} speciality={itm.speciality}/>*/}
                     </div>
                 )
             });
@@ -28,7 +30,7 @@ class ListDoctorCard extends Component{
 
     render() {
         return (
-            <div className='row'>
+            <div  className='container-list-doctor-card'>
                 {this.state.items}
             </div>
         );

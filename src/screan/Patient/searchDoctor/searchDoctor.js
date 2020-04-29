@@ -3,11 +3,13 @@ import './searchDoctorStyle.css';
 import axios from "axios";
 import {Helper} from "../../../api/urlApi";
 import {getToken, setLastSearchDoctorInfo} from "../../../functions/saveDataLocalStorage/localStorageFunction";
+import ListDoctorCard from "./listDoctorCard";
 class SearchDoctor extends Component{
     constructor(props) {
         super(props);
         this.state={
             searchTermBarValue:"",
+            datas:null,
         }
     }
     clicksearch=async ()=>{
@@ -18,6 +20,7 @@ class SearchDoctor extends Component{
         })).data;
         console.log(doctorData);
         await setLastSearchDoctorInfo(doctorData);
+        this.setState({...this.state,datas:doctorData});
     };
     //toogle
     toggleSearchInput=(e)=>{
@@ -28,8 +31,11 @@ class SearchDoctor extends Component{
         return (
             <div className='container-doctor-search'>
                 <div className='searchbar-container'>
-                    <i className='fa fa-search' onClick={this.clicksearch}/>
                     <input className='search-input' value={this.state.searchTermBarValue} onChange={this.toggleSearchInput}/>
+                    <i className='fa fa-search' onClick={this.clicksearch}/>
+                </div>
+                <div className='container-list-doctor'>
+                    <ListDoctorCard datas={this.state.datas}/>
                 </div>
             </div>
         );

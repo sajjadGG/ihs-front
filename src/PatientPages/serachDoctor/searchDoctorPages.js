@@ -21,7 +21,6 @@ constructor(props) {
     this.onKeyDownSearch = this.onKeyDownSearch.bind(this);
 }
 onChangedSearchBar (searchTerm) {
-console.log(searchTerm)
 this.setState({
     searchTermBarValue:searchTerm.target.value,
 })

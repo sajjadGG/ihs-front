@@ -9,6 +9,7 @@
      justify-content: space-around;
      width: 70%;
      margin: 0 auto;
+    margin-bottom: 30px;
  }
 .searchbar-container i {
     cursor: pointer;
@@ -19,5 +20,16 @@
     outline: none;
     border-width:0;
     border-bottom: 1px solid black;
-    text-align: right;
+    text-align: center;
+    direction: rtl;
+}
+
+.container-list-doctor{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.container-list-doctor-card{
+    display: flex;
+    flex-direction: column;
 }

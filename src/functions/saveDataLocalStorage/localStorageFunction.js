@@ -5,7 +5,7 @@ export const setLoginData= async (input)=>{
 };
 //get the user data
 export const getUserData =async ()=>{
-    return JSON.parse(localStorage.getItem('userData')).user;
+    return await JSON.parse(localStorage.getItem('userData')).user;
 };
 
 export const getToken=async ()=>{

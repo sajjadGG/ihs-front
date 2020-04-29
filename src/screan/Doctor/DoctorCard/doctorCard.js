@@ -1,6 +1,7 @@
 import React from "react";
 import './doctorcardStyle.css';
 import Avatar from '../../../assets/image/profile.png';
+import AvatarImage from "../../../functions/returnElement/returnAvatarPic";
 
 class DoctorCard extends React.Component {
     constructor(props) {
@@ -14,30 +15,31 @@ class DoctorCard extends React.Component {
 this.setState({...this.state,showMore:!this.state.showMore});
     };
     render() {
-const moreOption=<div>
-    <h1>kdlasjfjsdljfsdjk</h1>
-    <h1>kdlasjfjsdljfsdjk</h1>
-    <h1>kdlasjfjsdljfsdjk</h1>
+        const {name,avatar,speciality}=this.props;
+const moreOption=<div className='more-info'>
     <h1>kdlasjfjsdljfsdjk</h1>
 </div>;
         return (
             <div className='container-doctor-card'>
                 <div className='first-item-show-card'>
-                <div className='avatar-card'>
-                    <img src={Avatar} alt='avatar'/>
-                </div>
-                <div className='midel-info-card'>
-                    <h2>سجاد رمضانی</h2>
-                    <h3>متخصص برنامه نویسی</h3>
+                        <AvatarImage avatar={avatar} name={name}/>
+                    <div className='midel-info-card'>
+                    <h2>{name}</h2>
+                    <h3>{speciality?speciality:""}</h3>
+                    </div>
+
+                    <div className='end-info-card'>
+                    <div className='more' ref={this.more} onClick={this.morefunction}><h2> <i className = {+this.state.showMore?"fa fa-sort-desc rotate-up":"fa fa-sort-desc rotate-down "}/><span className={!this.state.showMore?"open-more":"close-more"}/></h2></div>
                 </div>
 
-                <div className='end-info-card'>
-                    <div className='more' ref={this.more} onClick={this.morefunction}><h2>{!this.state.showMore? <i className = "fa fa-sort-desc">بیشتر</i>
-                        : <i className = "fa fa-sort-asc">بستن</i>}</h2></div>
+                     </div>
+                <div className='contaner-more-info'>
+                    {this.state.showMore?moreOption:null}
+
                 </div>
-                </div>
-                {this.state.showMore?moreOption:null}
+
             </div>
+
         );
     }
 }

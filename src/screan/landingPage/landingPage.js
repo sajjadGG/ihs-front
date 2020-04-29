@@ -18,6 +18,7 @@ class LandingPage extends React.Component{
         this.doctorLogin = React.createRef();
         this.patientLogin = React.createRef();
         this.container= React.createRef();
+        this.sucsses = React.createRef();
         this.state={
             scroll:0,
             userName:"",
@@ -44,14 +45,15 @@ class LandingPage extends React.Component{
        // console.log('dataLogin');
         console.log(dataLogin);
         if(dataLogin.token){
-            this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
+            // this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
             await setLoginData(dataLogin);
-            setTimeout(()=>{
-                this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
-                if(dataLogin.type==="patient"){
-                    this.props.history.push("/profielpatient");
-                }
-            },2500);
+            if(dataLogin.type==="patient"){
+                this.props.history.push("/profielpatient");
+            }
+            // setTimeout(()=>{
+            //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
+            //
+            // },2500);
         }
         else {
             this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:`خطا`});
@@ -108,10 +110,10 @@ class LandingPage extends React.Component{
     // }
     scrollHandel=()=>{
         const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
-        const scrollTop = this.myRef.current.scrollTop;
+        // const scrollTop = this.myRef.current.scrollTop;
 // const scroll =window.pageYOffset;
         console.log(scrollY);
-        if(scrollY>250){
+        if(scrollY>250&&this.myRef.current){
             this.myRef.current.classList.add('show')
         }
         else {
@@ -123,6 +125,10 @@ class LandingPage extends React.Component{
     };
     componentDidMount() {
         window.addEventListener('scroll',this.scrollHandel);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll',this.scrollHandel);
+
     }
 
 
@@ -175,7 +181,6 @@ class LandingPage extends React.Component{
                 {showLoginDoctor}
                 {showLoginPatient}
 
-                <Sucses textInfo={this.state.showAlertSuccessText} className={this.state.showAlertSuccess?'show-alert ':' hide-alert '}/>
                 <WrongInfo textInfo={this.state.showAlertWrongText} className={this.state.showAlertWrong?'show-alert':'hide-alert'}/>
 
             </div>

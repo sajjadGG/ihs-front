@@ -2,6 +2,8 @@ import React from "react";
 import './profilePageStyle.css';
 import Avatar from '../../../assets/image/profile.png'
 import {withRouter} from "react-router-dom";
+import Sucses from "../../components/infoComponent/sucses";
+import {getUserData} from "../../../functions/saveDataLocalStorage/localStorageFunction";
 class ProfilePatient extends React.Component{
     constructor(props) {
         super(props);
@@ -14,6 +16,8 @@ class ProfilePatient extends React.Component{
             activeBar:this.myPageRef,
             editableMyPage:false,
             myPageName:"",
+            showAlertSuccess:false,
+            showAlertSuccessText:"",
         };
     }
     changeActiveBar=(refInput)=> {
@@ -36,13 +40,25 @@ class ProfilePatient extends React.Component{
     };
 
 
+     getData=async()=>{
+        const dataUser = await getUserData();
+        console.log(dataUser);
+        this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:" سلام "+dataUser.full_name+" "});
+        setTimeout(()=>{
+            this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:''});
+        },2500);
+    };
 
+
+    componentDidMount () {
+     this.getData();
+    };
 
     render() {
         //create page under bar
         const myPageInfo=
             <div className='my-page-info container-info-patient'>
-                <div className='test'>
+                <div className='avatar-profile'>
                     <img src={Avatar} alt='avatar' className='avatar'/>
                     <i className="material-icons editable fas fa-pen" onClick={this.toggleEditableMyPage}/>
                 </div>
@@ -105,8 +121,11 @@ class ProfilePatient extends React.Component{
             {/*begin info container*/}
                 <div className='container-info-mainPage'>
                     {showPage}
+
                 </div>
             {/*end info container*/}
+                <Sucses textInfo={this.state.showAlertSuccessText} className={this.state.showAlertSuccess?'show-alert ':' hide-alert '}/>
+
             </div>
 
         );
