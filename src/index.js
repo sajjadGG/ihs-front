@@ -26,7 +26,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
-            <Route exact path='/app' component={AppointmentHistory}/>
+            <Route exact path='/app'> <AppointmentHistory records = {[{Num:'1', Docter:'محمد', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'انجام شده'},{Num:'1', Docter:'رضا', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا موفق'},{Num:'1', Docter:'حسن', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'رزرو شده'},{Num:'1', Docter:'غلام', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا مشخص'}]} /></Route>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,
