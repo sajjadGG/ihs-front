@@ -1,5 +1,31 @@
 import React, { Component } from 'react'
 import Mapir from 'mapir-react-component';
+import "./componentStyle.css"
+
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+
+
+const useStyles = makeStyles({
+    root: {
+      Width: 275,
+      Height : 275
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
+
+
+
 const Map = Mapir.setToken({
     transformRequest: (url) => {
         return {
@@ -12,26 +38,82 @@ const Map = Mapir.setToken({
         }
     }
 });
-export default class SimpleMap extends Component {
-    render() {
-        return (
-            <div className="App">
-                <Mapir
-                    center={[51.420470, 35.729054]}
-                    Map={Map}
-                  
-                >
-                    <Mapir.Layer
-                        type="symbol"
-                        layout={{ "icon-image": "harbor-15" }}>
-                    </Mapir.Layer>
-                    <Mapir.Marker
-                        coordinates={[51.41, 35.72]}
-                        anchor="bottom">
-                    </Mapir.Marker>
-                </Mapir>
-            </div >
+
+
+
+
+
+export function LocationShower (props) {
+    const classes = useStyles();
+    return (
+        <Card className={classes.root}>
+            <Mapir
+                center={[51.420470, 35.729054]}
+                Map={Map}
+                
+            >
+                <Mapir.Layer
+                    type="symbol"
+                    layout={{ "icon-image": "harbor-15" }}>
+                </Mapir.Layer>
+                <Mapir.Marker
+                    coordinates={[51.41, 35.72]}
+                    anchor="bottom">
+                </Mapir.Marker>
+            </Mapir>
+        </Card >
+    )
+}
+
+ 
+export function LocationPicker (props) {
+    /**props should have onClick handler to set location state */
+    const classes = useStyles();
+    return (
+        <Card className={classes.root}>
+            <Mapir
+                center={[props.lng, props.lat]}
+                Map={Map}
+                onClick = {props.handleClick}
+                containerStyle={{height: "50vh",width: "50vw"}}
+            >
+                <Mapir.Layer
+                    type="symbol"
+                    layout={{ "icon-image": "harbor-15" }}
+                    >
+                </Mapir.Layer>
+                <Mapir.Marker
+                    coordinates={[props.lng, props.lat]}
+                    anchor="bottom">
+                </Mapir.Marker>
+            </Mapir>
+        </Card >
+    )
+}
+
+
+
+export class SimpleMap extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            lng : 51.41,
+            lat : 35.72,
+        }
+    }
+
+    handleClick = (m,e) => {
+        console.log(e.lngLat.lng)
+        console.log(e.lngLat.lat)
+        console.log(m)
+        this.setState({lng : e.lngLat.lng , lat : e.lngLat.lat })
+      }
+
+      render(){
+
+        return(
+        
+            <LocationPicker lng={this.state.lng} lat={this.state.lat} handleClick={this.handleClick}/>
         )
     }
 }
- 
