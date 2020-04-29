@@ -15,7 +15,8 @@ class CustomMessage extends React.Component {
           text: props.text ? props.text : "hi",
           color:props.color ? props.color : "green",
           time:props.time ? props.time : "11",
-          user : localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : "sara" 
+          user : localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).username : "sara" ,
+          appList : props.appList ? props.appList : []
         }
 
 
