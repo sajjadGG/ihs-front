@@ -15,6 +15,7 @@ import MessageRoom from "./components/MessageRoom";
 import './style.css'
 import ProfilePatient from "./screan/Patient/profile/profilePatient";
 import SearchDoctor from "./screan/Patient/searchDoctor/searchDoctor";
+import DoctorProfileFromPatient from "./screan/Doctor/DoctorProfileView/DoctorProfileFromPatient";
 
 
 const store = createStore(combineReducers(Reducer));
@@ -26,7 +27,8 @@ ReactDOM.render(
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
-            <Route exact path='/doctorPage/:id' component={DoctorPage}/>
+            {/*<Route exact path='/doctorPage/:id' component={DoctorPage}/>*/}
+            <Route exact path='/doctorPage/:id' component={DoctorProfileFromPatient}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
             <Route exact path='/profielpatient' component={ProfilePatient}/>
         </BrowserRouter>

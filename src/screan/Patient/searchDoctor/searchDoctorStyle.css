@@ -27,9 +27,11 @@
 .container-list-doctor{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
 }
 .container-list-doctor-card{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
 }

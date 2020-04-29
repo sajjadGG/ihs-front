@@ -78,9 +78,9 @@ export const putuserData = async({username,first_name , last_name , email})=>{
     .catch(error => console.log('error', error));
     return data
 }
-export const addFollower = async({followee})=>{
+export const addFollower = async({followee,token})=>{
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + token);
 
     var formdata = new FormData();
     formdata.append("followee", followee);
@@ -96,7 +96,7 @@ export const addFollower = async({followee})=>{
     .then(response => response.json())
     .catch(error => console.log('error', error));
     return data;
-}
+};
 
 export const getMessage = async({sender , receiver})=>{
     var myHeaders = new Headers();

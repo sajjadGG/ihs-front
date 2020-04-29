@@ -3,7 +3,7 @@ import './searchDoctorStyle.css';
 import axios from "axios";
 import {Helper} from "../../../api/urlApi";
 import {getToken, setLastSearchDoctorInfo} from "../../../functions/saveDataLocalStorage/localStorageFunction";
-import ListDoctorCard from "./listDoctorCard";
+import ListDocotorSearch from "../../../PatientPages/serachDoctor/ListDocotorSearch";
 class SearchDoctor extends Component{
     constructor(props) {
         super(props);
@@ -35,7 +35,9 @@ class SearchDoctor extends Component{
                     <i className='fa fa-search' onClick={this.clicksearch}/>
                 </div>
                 <div className='container-list-doctor'>
-                    <ListDoctorCard datas={this.state.datas}/>
+                    {/*<ListDoctorCard datas={this.state.datas}/>*/}
+                    <ListDocotorSearch datas={this.state.datas} />
+
                 </div>
             </div>
         );
