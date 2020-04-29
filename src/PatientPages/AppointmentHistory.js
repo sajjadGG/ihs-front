@@ -1,6 +1,6 @@
 import React ,{ useState } from 'react';
 
-function Appointment(props){
+function AppointmentHistory(props){
     const [records , setRecords] = useState(props.records ? props.records : null)
     
 
@@ -45,4 +45,4 @@ function Appointment(props){
     )
 }
 
-export default Appointment
+export default AppointmentHistory
