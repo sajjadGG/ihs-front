@@ -5,5 +5,14 @@ export const setLoginData= async (input)=>{
 };
 //get the user data
 export const getUserData =async ()=>{
-    return JSON.parse(localStorage.getItem('userData'));
+    return JSON.parse(localStorage.getItem('userData')).user;
+};
+
+export const getToken=async ()=>{
+    return JSON.parse(localStorage.getItem('userData')).token;
+};
+
+//set last search doctor info
+export const setLastSearchDoctorInfo=async (searchDoctors)=>{
+await localStorage.setItem('lastSearchDoctor',JSON.stringify(searchDoctors));
 };

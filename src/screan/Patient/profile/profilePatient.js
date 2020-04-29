@@ -1,12 +1,14 @@
 import React from "react";
 import './profilePageStyle.css';
 import Avatar from '../../../assets/image/profile.png'
+import {withRouter} from "react-router-dom";
 class ProfilePatient extends React.Component{
     constructor(props) {
         super(props);
         this.myPageRef = React.createRef();
         this.reminderRef = React.createRef();
         this.doctorDocument = React.createRef();
+        this.doctorSearch = React.createRef();
         this.editProfileInfo = React.createRef();
         this.state={
             activeBar:this.myPageRef,
@@ -15,10 +17,11 @@ class ProfilePatient extends React.Component{
         };
     }
     changeActiveBar=(refInput)=> {
-        console.log(refInput);
-        console.log(this.state);
         if (refInput !== this.state.activeBar) {
             this.setState({ activeBar: refInput});
+        }
+        if(refInput === this.doctorSearch){
+            this.props.history.push("/searchDoctor");
         }
     };
 
@@ -71,6 +74,17 @@ class ProfilePatient extends React.Component{
         }
         return (
             <div className='container-mainPage'>
+                <div className='events-bar-container'>
+                    <div className={'event'}>
+                        <i className="fa fa-calendar"><span>1</span></i>
+                    </div>
+                    <div className={'event'} >
+                        <i className="fas fa-capsules"><span>2</span></i>
+                    </div>
+                    <div className={'event'} >
+                        <i className="fa fa-envelope-o "><span>+20</span></i>
+                    </div>
+                </div>
                 <div className='header-mainPage'>
                     <div className={this.state.activeBar===this.myPageRef?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.myPageRef)} ref={this.myPageRef}>
                         <i className="fas fa-user-circle"><span>صفحه من</span></i>
@@ -81,15 +95,11 @@ class ProfilePatient extends React.Component{
                     <div className={this.state.activeBar===this.doctorDocument?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorDocument)} ref={this.doctorDocument}>
                         <i className="far fa-id-card"><span>پرونده پزشکی</span></i>
                     </div>
-                    <div className={'event'}>
-                        <i className="fa fa-calendar"><span>1</span></i>
+                    <div className={this.state.activeBar===this.doctorSearch?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorSearch)} ref={this.doctorSearch}>
+                        <i className="fa fa-user-md"><span>جستو جوی پزشک</span></i>
                     </div>
-                    <div className={'event'} >
-                        <i className="fas fa-capsules"><span>2</span></i>
-                    </div>
-                    <div className={'event'} >
-                        <i className="fa fa-envelope-o "><span>+20</span></i>
-                    </div>
+
+
                 </div>
             {/*    end of bar */}
             {/*begin info container*/}
@@ -103,4 +113,4 @@ class ProfilePatient extends React.Component{
     }
 }
 
-export default  ProfilePatient
+export default  withRouter(ProfilePatient)

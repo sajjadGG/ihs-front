@@ -1,0 +1,52 @@
+.container-doctor-card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.first-item-show-card{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 10px auto;
+    padding: 15px 0;
+    justify-content: space-between;
+    height: 150px;
+}
+.avatar-card{
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.avatar-card img{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.midel-info-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+.end-info-card{
+
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 10px;
+}
+.end-info-card .more{
+  color: blue;
+    cursor: pointer;
+;
+}

@@ -1,0 +1,23 @@
+.container-doctor-search{
+    display: flex;
+    flex-direction: column;
+}
+.searchbar-container{
+     position: relative;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     width: 70%;
+     margin: 0 auto;
+ }
+.searchbar-container i {
+    cursor: pointer;
+}
+.searchbar-container input {
+    cursor: text;
+    width: 70%;
+    outline: none;
+    border-width:0;
+    border-bottom: 1px solid black;
+    text-align: right;
+}

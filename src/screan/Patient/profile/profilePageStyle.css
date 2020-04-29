@@ -1,6 +1,7 @@
 .container-mainPage{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .header-mainPage{
     display: flex;
@@ -131,8 +132,18 @@ animation: eventReact 2s forwards infinite;
     cursor: pointer;
 
 }
+.events-bar-container{
+    position: absolute;
+    left: 10%;
+    top: -30px;
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-between;
+}
 .event{
     cursor: pointer;
+    margin:0 10px ;
 }
 
 
