@@ -1,0 +1,84 @@
+/*Profile Card 1*/
+.profile-card-1 {
+    color: #651ec2;
+  }
+  
+.avatar-img{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+  .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+.profile-card-1{
+  box-shadow: 2px 2px 10px grey;
+animation: big-out 1s forwards;
+  cursor: pointer;
+}
+    .profile-card-1:hover{
+    animation: bigger 1s forwards;
+    }
+    @keyframes bigger {
+      0%{
+             transform: scale(1);
+         }
+      100%{
+             transform: scale(1.1);
+           }
+
+    }
+@keyframes big-out {
+      0%{
+        transform: scale(1.1);
+
+      }
+      100%{
+        transform: scale(1);
+
+      }
+
+    }

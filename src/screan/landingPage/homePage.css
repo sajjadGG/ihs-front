@@ -1,0 +1,228 @@
+.container{
+    /*margin: 20px;*/
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.baner{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.baner img{
+    width: 100%;
+    min-height: 300px;
+}
+.info-landing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+/*white-space*/
+.white-space{
+    height: 200px;
+    width: 100%;
+    /*background-color: greenyellow;*/
+}
+.white-space1{
+    height: 200px;
+    width: 100%;
+    /*background-color: greenyellow;*/
+}
+.container-items-show{
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.img-show{
+    margin: 0 auto;
+    animation: hideImgae 2s forwards;
+}
+@keyframes hideImgae {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.img-show img{
+    width: 90%;
+    height: auto;
+}
+.show{
+    animation: showImage 2s forwards;
+}
+@keyframes showImage {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
+
+.login-ways{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.login-ways button{
+    min-width: 60px;
+    padding: 10px;
+}
+
+/*todo:check it*/
+.info-login-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to left,wheat, wheat,whitesmoke,white);
+    /*height: 150px;*/
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px grey;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    animation: les 1s forwards;
+    position: relative;
+
+
+}
+.info-login-container:hover{
+    animation: big 1s forwards;
+}
+@keyframes big {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.005);
+    }
+}
+@keyframes les {
+    0%{
+        transform: scale(1.005);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.info-doctor-login{
+    width: 50%;
+}.info-doctor-login img{
+    width: 50%;
+}
+ .patient-login-container{
+     background-image: linear-gradient(to left,#71f573, #71f573,whitesmoke,white);
+
+ }
+
+.container-info-login-text{
+    width: 40%;
+    direction: rtl;
+}
+.container-info-login-text p{
+    font-size: 1.5em;
+    text-align: right;
+    width: 95%;
+    direction: rtl;
+}
+.btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    margin: 0 0 2em;
+    max-width: 160px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+}
+@media (min-width: 600px) {
+    .btn {
+        margin: 0 1em 2em;
+    }
+}
+.btn:hover {
+    text-decoration: none;
+}
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn-1 {
+    background: #e02c26;
+    font-weight: 100;
+}
+.btn-1 svg {
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.btn-1 rect {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-dasharray: 422, 0;
+    -webkit-transition: all 0.35s linear;
+    transition: all 0.35s linear;
+}
+
+.btn-1:hover {
+    background: rgba(225, 51, 45, 0);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+.btn-1:hover rect {
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+/*intro*/
+.container-intro{
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.intro-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.icon-intro{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.icon-intro img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.intro-text{
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
