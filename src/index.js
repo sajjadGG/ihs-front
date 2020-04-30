@@ -21,6 +21,8 @@ import DoctorProfileFromPatient from "./screan/Doctor/DoctorProfileView/DoctorPr
 
 import AppointmentPicker from "./components/AppointmentPicker"
 import {SimpleMap} from "./components/LocationPicker"
+import {DetailedExpansionPanel} from "./components/Review"
+
 import {DoctorClinic} from "./doctorPage/doctorclinic"
 
 const store = createStore(combineReducers(Reducer));
