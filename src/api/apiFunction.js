@@ -203,7 +203,7 @@ export const getAppointment = async({doctor , speciality,startTime , endTime})=>
 
  
     var requestOptions = {
-    method: 'GEt',
+    method: 'GET',
     headers: myHeaders,
     redirect: 'follow'
     };
@@ -213,6 +213,25 @@ export const getAppointment = async({doctor , speciality,startTime , endTime})=>
     .catch(error => console.log('error', error));
     return data;
 }
+
+export const getMyAppointment = async({name })=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + localStorage.getItem('token'));
+    console.log("innnnnnnnnnn")
+    console.log(name)
+ 
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.appointment+`?name=${name}`, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
+
 
 
 export const postReview = async({reviewer , reviewee,text , rating, appointment})=>{

@@ -5,6 +5,9 @@ import {withRouter} from "react-router-dom";
 import Sucses from "../../components/infoComponent/sucses";
 import {getUserData} from "../../../functions/saveDataLocalStorage/localStorageFunction";
 import AvatarImage from "../../../functions/returnElement/returnAvatarPic";
+
+import AppointmentHistory from "../../../PatientPages/AppointmentHistory"
+
 class ProfilePatient extends React.Component{
     constructor(props) {
         super(props);
@@ -100,17 +103,9 @@ class ProfilePatient extends React.Component{
 
         //todo:check it if is not empty
         const doctorDocument =
-            <div className='doctor-document-info container-info-patient'>
-            <div className='doctorDocumen-page-info profile-items'>
-
-            <div className='nothing-show'>
-                <i className='fas fa-low-vision'/>
-                <h1>
-                موردی یافت نشد
-                </h1>
-            </div>
-            </div>
-        </div>;
+            <div >
+                <AppointmentHistory/>
+            </div>;
 
         let showPage;
         if (this.state.activeBar ===this.myPageRef){
@@ -148,10 +143,10 @@ class ProfilePatient extends React.Component{
                         <span>یادآوری</span>
                     </div>
                     <div className={this.state.activeBar===this.doctorDocument?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorDocument)} ref={this.doctorDocument}>
-                        <i className="far fa-id-card"/><span>پرونده پزشکی</span>
+                        <i className="far fa-id-card"/><span>نوبت های من</span>
                     </div>
                     <div className={this.state.activeBar===this.doctorSearch?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorSearch)} ref={this.doctorSearch}>
-                        <i className="fa fa-user-md"/><span>رزور پزشک</span>
+                        <i className="fa fa-user-md"/><span>جستجوی پزشک</span>
                     </div>
 
 
