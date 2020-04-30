@@ -15,7 +15,7 @@ import MessageRoom from "./components/MessageRoom";
 import './style.css'
 import AppointmentPicker from "./components/AppointmentPicker"
 import {SimpleMap} from "./components/LocationPicker"
-import {Clinic} from "./doctorPage/doctorclinic"
+import {DoctorClinic} from "./doctorPage/doctorclinic"
 
 const store = createStore(combineReducers(Reducer));
 
@@ -27,7 +27,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
-            <Route exact path='/test' component={Clinic}/>
+            <Route exact path='/test' component={() => <DoctorClinic clinics={[{name : "شوش" , lng:23 , lat:12} , {name : "تهران پارس" , lng:23 , lat:12}]}/>}/>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,

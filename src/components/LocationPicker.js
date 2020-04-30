@@ -46,9 +46,9 @@ const Map = Mapir.setToken({
 export function LocationShower (props) {
     const classes = useStyles();
     return (
-        <Card className={classes.root}>
+        <Card >
             <Mapir
-                center={[51.420470, 35.729054]}
+                center={[props.lng, props.lat]}
                 Map={Map}
                 
             >
@@ -57,7 +57,7 @@ export function LocationShower (props) {
                     layout={{ "icon-image": "harbor-15" }}>
                 </Mapir.Layer>
                 <Mapir.Marker
-                    coordinates={[51.41, 35.72]}
+                    coordinates={[props.lng, props.lat]}
                     anchor="bottom">
                 </Mapir.Marker>
             </Mapir>
