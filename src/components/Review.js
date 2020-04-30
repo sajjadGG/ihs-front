@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export  function DetailedExpansionPanel() {
+export  function ReviewExpansionPanel(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
 
@@ -143,9 +143,8 @@ export  function DetailedExpansionPanel() {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size="small">Cancel</Button>
-          <Button size="small" color="primary">
-            Save
+          <Button size="small" color="primary" onClick = {props.handleClick}>
+            ثبت
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
@@ -155,12 +154,4 @@ export  function DetailedExpansionPanel() {
 
 
 
-export class Review extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            lng : 51.41,
-            lat : 35.72,
-        }
-    }
-}
+

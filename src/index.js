@@ -26,7 +26,6 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
-            <Route exact path='/test' component={DetailedExpansionPanel}/>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,
