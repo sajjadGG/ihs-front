@@ -12,6 +12,7 @@ import SearchDoctorPages from "./PatientPages/serachDoctor/searchDoctorPages";
 import DoctorPage from "./doctorPage/doctorPage";
 import CustomNavbar from "./components/Navbar";
 import MessageRoom from "./components/MessageRoom";
+import AppointmentHistory from "./PatientPages/AppointmentHistory"
 import './style.css'
 import AppointmentPicker from "./components/AppointmentPicker"
 import {SimpleMap} from "./components/LocationPicker"
@@ -26,7 +27,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctorPages}/>
             <Route exact path='/doctorPage/:id' component={DoctorPage}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
-            <Route exact path='/test' component={SimpleMap}/>
+            <Route exact path='/app'> <AppointmentHistory records = {[{Num:'1', Docter:'محمد', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'انجام شده'},{Num:'2', Docter:'رضا', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا موفق'},{Num:'3', Docter:'حسن', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'رزرو شده'},{Num:'4', Docter:'غلام', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا مشخص'}]} /></Route>
         </BrowserRouter>
         {/*<App/>*/}
       </Provider>,
