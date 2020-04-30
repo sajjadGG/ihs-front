@@ -199,7 +199,7 @@ export const postClinic = async({name , description,address , city, longitude,la
 
 export const getAppointment = async({doctor , speciality,startTime , endTime})=>{
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + await getToken());
 
  
     var requestOptions = {

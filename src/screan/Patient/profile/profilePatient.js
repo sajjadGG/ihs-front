@@ -7,6 +7,7 @@ import {getUserData} from "../../../functions/saveDataLocalStorage/localStorageF
 import AvatarImage from "../../../functions/returnElement/returnAvatarPic";
 
 import AppointmentHistory from "../../../PatientPages/AppointmentHistory"
+import AppointmentSearch from "../../../components/AppointmentSearch";
 
 class ProfilePatient extends React.Component{
     constructor(props) {
@@ -15,6 +16,7 @@ class ProfilePatient extends React.Component{
         this.reminderRef = React.createRef();
         this.doctorDocument = React.createRef();
         this.doctorSearch = React.createRef();
+        this.apointment = React.createRef();
         this.editProfileInfo = React.createRef();
         this.state={
             activeBar:this.myPageRef,
@@ -24,10 +26,12 @@ class ProfilePatient extends React.Component{
             showAlertSuccess:false,
             showAlertSuccessText:"",
             avatar:null,
-            email:""
+            email:"",
+
         };
     }
     changeActiveBar=(refInput)=> {
+        console.log(refInput.current)
         if (refInput !== this.state.activeBar) {
             this.setState({ activeBar: refInput});
         }
@@ -88,6 +92,7 @@ class ProfilePatient extends React.Component{
                 <input type='text' placeholder={this.state.email} className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>null} value={this.state.email}/>
 
             </div>;
+
         const reminderPage=
             <div className='doctor-document-info container-info-patient'>
 
@@ -107,6 +112,7 @@ class ProfilePatient extends React.Component{
                 <AppointmentHistory/>
             </div>;
 
+        const apoinmentShow = <div><AppointmentSearch/></div>;
         let showPage;
         if (this.state.activeBar ===this.myPageRef){
             showPage = myPageInfo;
@@ -116,6 +122,10 @@ class ProfilePatient extends React.Component{
         }
         else if(this.state.activeBar ===this.doctorDocument){
         showPage=doctorDocument;
+        }
+        else if(this.state.activeBar === this.apointment){
+            console.log("hiii")
+            showPage=apoinmentShow;
         }
         return (
             <div className='container-mainPage'>
@@ -147,6 +157,9 @@ class ProfilePatient extends React.Component{
                     </div>
                     <div className={this.state.activeBar===this.doctorSearch?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorSearch)} ref={this.doctorSearch}>
                         <i className="fa fa-user-md"/><span>جستجوی پزشک</span>
+                    </div>
+                    <div className={this.state.activeBar===this.apointment?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.apointment)} ref={this.apointment}>
+                        <i className="fa fa-history"/><span>نوبت گیری</span>
                     </div>
 
 

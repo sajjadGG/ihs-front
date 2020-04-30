@@ -53,3 +53,8 @@ html {
     margin: auto;
     color: rgb(255, 255, 255);
 }
+
+
+.hide-btn{
+    background-color: rgba(0,0,0,.0);
+}
