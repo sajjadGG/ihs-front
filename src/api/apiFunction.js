@@ -136,3 +136,91 @@ export const postMessage = async({sender , receiver,text})=>{
     .catch(error => console.log('error', error));
     return data;
 }
+
+export const postClinic = async({name , description,address , city, longitude,latitude})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+
+    var formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("description", description);
+    formdata.append("address", address);
+    formdata.append("city", city);
+    formdata.append("longitude", longitude);
+    formdata.append("latitude", latitude);
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body : formdata,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.createClinic, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
+
+
+export const getAppointment = async({doctor , speciality,startTime , endTime})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+
+ 
+    var requestOptions = {
+    method: 'GEt',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.appointment+`?doctor=${doctor}&speciality=${speciality}&startTime=${startTime}&endTime=${endTime}`, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
+
+
+export const postReview = async({reviewer , reviewee,text , rating, appointment})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+
+    var formdata = new FormData();
+    formdata.append("reviewer", reviewer);
+    formdata.append("reviewee", reviewee);
+    formdata.append("text", text);
+    formdata.append("rating", rating);
+    formdata.append("appointment", appointment);
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body : formdata,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.reviews, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
+
+export const putAppointment = async({appointmentId , status})=>{
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization",Helper.appointment + JSON.parse(localStorage.getItem('token')));
+
+    var formdata = new FormData();
+    formdata.append("status", status);
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body : formdata,
+    redirect: 'follow'
+    };
+
+    let data = await fetch(Helper.appointment +`/${appointmentId}/`, requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+    return data;
+}
