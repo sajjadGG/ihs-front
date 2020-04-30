@@ -55,7 +55,7 @@ class AppointmentSearch extends React.Component{
 
     }
     searchApoinment=async ()=> {
-        const data=await getAppointment({doctor:this.state.doctor,speciality:this.state.user,startTime:this.state.start_time,endTime:this.state.end_time});
+        const data=await getAppointment({doctor:this.state.doctor,speciality:this.state.user,startTime:this.state.start_time.toISOString(),endTime:this.state.end_time.toISOString()});
         console.log(data);
     };
     render(){

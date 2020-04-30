@@ -46,18 +46,18 @@ class AppointmentHistory extends React.Component{
                     let color;
                     let Cancel = null;
                     let Edit = null;
-                    let laqv =<div onClick={()=> this.Del(element.Num)} style={{cursor:"pointer",backgroundColor:"rgb(114, 114, 114)" , border:"1px solid blue" , borderRadius:"10px"}}><h2>لغو</h2></div>
+                    let laqv =<div onClick={()=> this.Del(element.id)} style={{cursor:"pointer",backgroundColor:"rgb(114, 114, 114)" , border:"1px solid blue" , borderRadius:"10px"}}><h2>لغو</h2></div>
 
           
-                    if(element.AppState == "نا موفق"){
+                    if(element.status == "نا موفق"){
                         color="rgb(255, 129, 129)";
                     }
-                    else if (element.AppState == "رزرو شده") {
+                    else if (element.status == "رزرو شده") {
                         color="rgb(140, 228, 140)";
                         Edit = <i className="far fa-edit" onClick={this.state.EditC?()=>this.setEditC(null):()=>this.setEditC(laqv)} style={{cursor:"pointer"}}></i>
                         Cancel = this.state.EditC;
                     }
-                    else if(element.AppState == "انجام شده"){
+                    else if(element.status == "انجام شده"){
                         color="rgb(135, 135, 243)";
                     }
                     else{
@@ -65,7 +65,7 @@ class AppointmentHistory extends React.Component{
                     }
                     return (
                     <div className="Tt row" style={{backgroundColor: color}}>
-                    <div className="Tbid col-md-1"><h3>{element.Num}</h3></div>
+                    <div className="Tbid col-md-1"><h3>{element.id}</h3></div>
                     <div className="Tbid col-md-3"><h3>{element.Docter}</h3></div>
                     <div className="Tbid col-md-3"><h3>{element.Proficiency}</h3></div>
                     <div className="Tbid col-md-3"><h3>{element.AppDate}</h3></div>
