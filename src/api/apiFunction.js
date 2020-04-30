@@ -169,7 +169,7 @@ export const searchUser=async ({id})=>{
     }
 };
 
-}
+
 
 export const postClinic = async({name , description,address , city, longitude,latitude})=>{
     var myHeaders = new Headers();
