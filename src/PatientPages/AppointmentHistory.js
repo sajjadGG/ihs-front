@@ -49,15 +49,15 @@ class AppointmentHistory extends React.Component{
                     let laqv =<div onClick={()=> this.Del(element.id)} style={{cursor:"pointer",backgroundColor:"rgb(114, 114, 114)" , border:"1px solid blue" , borderRadius:"10px"}}><h2>لغو</h2></div>
 
           
-                    if(element.status == "نا موفق"){
+                    if(element.status == "O"){
                         color="rgb(255, 129, 129)";
                     }
-                    else if (element.status == "رزرو شده") {
+                    else if (element.status == "R") {
                         color="rgb(140, 228, 140)";
                         Edit = <i className="far fa-edit" onClick={this.state.EditC?()=>this.setEditC(null):()=>this.setEditC(laqv)} style={{cursor:"pointer"}}></i>
                         Cancel = this.state.EditC;
                     }
-                    else if(element.status == "انجام شده"){
+                    else if(element.status == "C"){
                         color="rgb(135, 135, 243)";
                     }
                     else{
@@ -66,10 +66,10 @@ class AppointmentHistory extends React.Component{
                     return (
                     <div className="Tt row" style={{backgroundColor: color}}>
                     <div className="Tbid col-md-1"><h3>{element.id}</h3></div>
-                    <div className="Tbid col-md-3"><h3>{element.Docter}</h3></div>
-                    <div className="Tbid col-md-3"><h3>{element.Proficiency}</h3></div>
-                    <div className="Tbid col-md-3"><h3>{element.AppDate}</h3></div>
-                    <div className="Tbid col-md-2"><h3>{element.AppState}{Edit}{Cancel}</h3></div>
+                    <div className="Tbid col-md-3"><h3>{element.doctorUsername}</h3></div>
+                    <div className="Tbid col-md-3"><h3>{element.doctorSpeciality}</h3></div>
+                    <div className="Tbid col-md-3"><h3>{element.start_time}</h3></div>
+                    <div className="Tbid col-md-2"><h3>{element.status}{Edit}{Cancel}</h3></div>
                             </div>
                     )
                 })}

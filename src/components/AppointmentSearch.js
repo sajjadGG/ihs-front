@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import {Button, Container , Row , FormLabel} from 'react-bootstrap'
+import Divider from '@material-ui/core/Divider';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -32,10 +33,11 @@ class AppointmentSearch extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            doctor : props.doctor? props.doctor : "john",
-            user : props.user? props.user : "sara",
+            doctor : props.doctor? props.doctor : "",
+            user : props.user? props.user : "",
             start_time : props.start_time ? props.start_time : new Date(),
-            end_time : props.end_time ? props.end_time : null
+            end_time : props.end_time ? props.end_time : null,
+            records : []
         }
     }
 
@@ -56,9 +58,21 @@ class AppointmentSearch extends React.Component{
     }
     searchApoinment=async ()=> {
         const data=await getAppointment({doctor:this.state.doctor,speciality:this.state.user,startTime:this.state.start_time.toISOString(),endTime:this.state.end_time.toISOString()});
-        console.log(data);
+        this.setState({records : data})
     };
     render(){
+        const listItems = this.state.records.map((element) =>
+        <Container>
+            <Row>
+            <FormLabel>{element.id}</FormLabel>
+            <FormLabel>{element.doctorUsername}</FormLabel>
+            <FormLabel>{element.doctorSpeciality}</FormLabel>
+            <FormLabel>{element.start_time}</FormLabel>
+            <Button>رزرو</Button>
+            </Row>
+            <Divider />
+            </Container>
+                  );
 
         return(
             <Container>
@@ -76,7 +90,7 @@ class AppointmentSearch extends React.Component{
                 </Row>
 
                 <Container>
-
+                    {listItems}
                 </Container>
               </Container>
         )
