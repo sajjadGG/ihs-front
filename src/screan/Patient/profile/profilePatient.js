@@ -4,6 +4,7 @@ import Avatar from '../../../assets/image/profile.png'
 import {withRouter} from "react-router-dom";
 import Sucses from "../../components/infoComponent/sucses";
 import {getUserData} from "../../../functions/saveDataLocalStorage/localStorageFunction";
+import AvatarImage from "../../../functions/returnElement/returnAvatarPic";
 class ProfilePatient extends React.Component{
     constructor(props) {
         super(props);
@@ -15,9 +16,12 @@ class ProfilePatient extends React.Component{
         this.state={
             activeBar:this.myPageRef,
             editableMyPage:false,
-            myPageName:"",
+            myPageName:" ",
+            userId:"",
             showAlertSuccess:false,
             showAlertSuccessText:"",
+            avatar:null,
+            email:""
         };
     }
     changeActiveBar=(refInput)=> {
@@ -42,8 +46,13 @@ class ProfilePatient extends React.Component{
 
      getData=async()=>{
         const dataUser = await getUserData();
-        console.log(dataUser);
-        this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:" سلام "+dataUser.full_name+" "});
+        console.log("namme",dataUser);
+        const {name,lastname,full_name,username,avatar,email}=dataUser;
+        this.setState({...this.state,myPageName:full_name,userId:username,email:email});
+        if(avatar){
+            this.setState({...this.state,avatar:avatar});
+        }
+        this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:" سلام "+full_name+" "});
         setTimeout(()=>{
             this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:''});
         },2500);
@@ -63,10 +72,18 @@ class ProfilePatient extends React.Component{
         const myPageInfo=
             <div className='my-page-info container-info-patient'>
                 <div className='avatar-profile'>
-                    <img src={Avatar} alt='avatar' className='avatar'/>
+                    {/*<img src={Avatar} alt='avatar' className='avatar'/>*/}
+                    <AvatarImage name={this.state.myPageName} avatar={this.state.avatar}/>
                     <i className="material-icons editable fas fa-pen" onClick={this.toggleEditableMyPage}/>
                 </div>
-                <input type='text' placeholder='سید رضا موسویان' className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>this.toggleNameMyPage(name)} value={this.state.myPageName}/>
+                <label></label>
+                <label>نام و نام خانوادگی</label>
+                <input type='text' placeholder={this.state.myPageName} className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>this.toggleNameMyPage(name)} value={this.state.myPageName}/>
+                <label>نام کاربری</label>
+                <input type='text' placeholder={this.state.userId} className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>null} value={this.state.userId}/>
+                <label>ایمیل</label>
+                <input type='text' placeholder={this.state.email} className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>null} value={this.state.email}/>
+
             </div>;
         const reminderPage=
             <div className='doctor-document-info container-info-patient'>
@@ -134,7 +151,7 @@ class ProfilePatient extends React.Component{
                         <i className="far fa-id-card"/><span>پرونده پزشکی</span>
                     </div>
                     <div className={this.state.activeBar===this.doctorSearch?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorSearch)} ref={this.doctorSearch}>
-                        <i className="fa fa-user-md"/><span>جستو جوی پزشک</span>
+                        <i className="fa fa-user-md"/><span>رزور پزشک</span>
                     </div>
 
 
