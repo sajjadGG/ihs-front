@@ -2,6 +2,8 @@
 export const setLoginData= async (input)=>{
     localStorage.removeItem('userData');
     localStorage.setItem('userData',JSON.stringify(input));
+    localStorage.setItem('token',input.token);
+
 };
 //get the user data
 export const getUserData =async ()=>{

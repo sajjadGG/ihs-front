@@ -14,6 +14,10 @@ import drug from '../../assets/image/drug-1674890.png';
 import medical from '../../assets/image/flat-5051465.png';
 import doctorintro from '../../assets/image/medical-5047582.png';
 
+import {Button } from 'react-bootstrap'
+import Switch from '@material-ui/core/Switch';
+import Grid from '@material-ui/core/Grid';
+
 class LandingPage extends React.Component{
 
 
@@ -39,6 +43,7 @@ class LandingPage extends React.Component{
                 passwordcreate:"",
                 usercreate:"",
                 emailcreate:"",
+                userType:""
 
         };
     };
@@ -57,6 +62,10 @@ class LandingPage extends React.Component{
     };
     toggleemail=(email)=>{
         this.setState({...this.state,emailcreate:email.target.value});
+    };
+    toggleUserType = (ut)=>{
+        //console.log(ut.target.checked)
+        this.setState({...this.setState,userType:ut.target.checked?'doctor':'patient'})
     };
     //create toggle function for input modal
     toggleUserName=(userName)=>{
@@ -96,14 +105,18 @@ class LandingPage extends React.Component{
 
     };
     toggleLoginBtnCreate= async ()=>{
-        const dataLogin = await signUp({firstName:this.state.namecreate,lastName:this.state.lastnamecreate,username:this.state.usercreate,password:this.state.passwordcreate,email:this.state.emailcreate});
+        const dataCreate = await signUp({firstName:this.state.namecreate,lastName:this.state.lastnamecreate,username:this.state.usercreate,password:this.state.passwordcreate,email:this.state.emailcreate , userType : this.state.userType});
        // console.log('dataLogin');
+       const dataLogin = await login({username:this.state.usercreate,password:this.state.passwordcreate});
         console.log(dataLogin);
         if(dataLogin.token){
             // this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
             await setLoginData(dataLogin);
             if(dataLogin.type==="patient"){
                 this.props.history.push("/profielpatient");
+            }
+            else if (dataLogin.type==="doctor"){
+                this.props.history.push("/profieldoctor");
             }
             // setTimeout(()=>{
             //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
@@ -286,7 +299,15 @@ class LandingPage extends React.Component{
                         <input type="input" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
                         <label htmlFor="name" className="form__label"> رمز عبور </label>
                     </div>
-
+                    <div>
+                    <Grid component="label" container alignItems="center" spacing={1}>
+                        <Grid item>بیمار</Grid>
+                        <Grid item>
+                            <Switch  onChange={this.toggleUserType} name="checkedC" />
+                        </Grid>
+                        <Grid item>دکتر</Grid>
+                        </Grid>
+                    </div>
                     <button className='login-btn' onClick={this.toggleLoginBtnCreate}>ساخت حساب</button>
 
                 </div>
@@ -318,7 +339,7 @@ class LandingPage extends React.Component{
                             <img src={medical} alt='intro'/>
                         </div>
                         <div className='intro-text'>
-                            <span>sajjad and reza</span>
+                            <span>نوبت گیری</span>
                         </div>
                     </div>
                     <div className='intro-info'>
@@ -326,7 +347,7 @@ class LandingPage extends React.Component{
                             <img src={doctorintro} alt='intro'/>
                         </div>
                         <div className='intro-text'>
-                            <span>sajjad and reza</span>
+                            <span>ارتباط با دکتر</span>
                         </div>
                     </div>
                     <div className='intro-info'>
@@ -334,7 +355,7 @@ class LandingPage extends React.Component{
                             <img src={drug} alt='intro'/>
                         </div>
                         <div className='intro-text'>
-                            <span>sajjad and reza</span>
+                            <span>یادآوری دارو</span>
                         </div>
                     </div>
                 </div>
@@ -344,7 +365,7 @@ class LandingPage extends React.Component{
                         <img src={infodoctor} alt='doctorLogin'/>
                     </div>
                     <div className='container-info-login-text doctor-login-text'>
-                        <p>هر پزشک میتوناد با داشتن حساب کاربری خود برنامه روزانه خود رو مدیریت کند.</p>
+                        <p>هر پزشک میتواند با داشتن حساب کاربری خود برنامه روزانه خود رو مدیریت کند.</p>
                     </div>
                     {/*<button className='' onClick={this.onClickDoctorBtn}>دکتر</button>*/}
                     {/*<a href="https://twitter.com/Dave_Conner" className="doctor-btn btn btn-5" onClick={this.onClickDoctorBtn}>Hover1</a>*/}
@@ -361,7 +382,7 @@ class LandingPage extends React.Component{
                         <img src={infoPatient} alt='patientLogin'/>
                     </div>
                     <div className='container-info-login-text doctor-login-text'>
-                        <p>هر پزشک میتوناد با داشتن حساب کاربری خود برنامه روزانه خود رو مدیریت کند.</p>
+                        <p>هر پزشک میتواند با داشتن حساب کاربری خود برنامه روزانه خود رو مدیریت کند.</p>
                     </div>
                      {/*<button className='patient-btn' onClick={this.patientBtn}>بیمار</button>*/}
                     <a className="doctor-btn btn btn-1" onClick={this.patientBtn}>
@@ -376,7 +397,7 @@ class LandingPage extends React.Component{
                 {/*<div className='img-show container-items-show'  ref={this.myRef} >*/}
                 {/*    <img src={IMG} alt="HomePage"/>*/}
                 {/*</div>*/}
-                <button onClick={this.createAccount}>ساخت حساب</button>
+                <Button onClick={this.createAccount}>ساخت حساب</Button>
                 {createAccount}
                 {showLoginDoctor}
                 {showLoginPatient}
