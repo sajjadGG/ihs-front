@@ -1,6 +1,18 @@
 .fade modal user_card_patient modal show{
     width: auto!important;
 }
+body{
+    /*direction: rtl;*/
+    margin: 20px;
+    font-family: bn;
+
+}
+@font-face {
+    font-family: bn;
+    src: url(./assets/B-NAZANIN.TTF);
+
+}
+
 html {
 
     scroll-behavior: smooth;
