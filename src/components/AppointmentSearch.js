@@ -21,10 +21,13 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       width: 200,
     },
+    root: {
+        color : theme.palette.primary.light
+    }
   }));
   
 
-class AppointmentPicker extends React.Component{
+class AppointmentSearch extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -34,6 +37,7 @@ class AppointmentPicker extends React.Component{
             end_time : props.end_time ? props.end_time : null
         }
     }
+
 
     StartTimeOnChange = (e) => {
       this.setState({start_time : e.value._d})
@@ -51,23 +55,27 @@ class AppointmentPicker extends React.Component{
     }
 
     render(){
-
         return(
-             <AppBar position="static" color="inherit">
-             <Toolbar>
-               <FormLabel>تاریخ شروع</FormLabel>
-             <DatePicker onClickSubmitButton = {this.StartTimeOnChange}/>
-             <FormLabel>تاریخ پایان</FormLabel>
-             <DatePicker onClickSubmitButton = {this.EndTimeOnChange}/>
-             <TextField label="تخصص"/>
-             <TextField label="نام دکتر"/>
-              <Button>Search</Button>
-              </Toolbar>
-              </AppBar>
+            <Container>
+                <Row position="static">
+                <FormLabel>تاریخ شروع</FormLabel>
+                <DatePicker onClickSubmitButton = {this.StartTimeOnChange}/>
+                <FormLabel>تاریخ پایان</FormLabel>
+                <DatePicker onClickSubmitButton = {this.EndTimeOnChange}/>
+                <Toolbar>
+                <TextField label="تخصص"/>
+                <TextField label="نام دکتر"/>
+                <Button>Search</Button>
+                </Toolbar>
+                </Row>
+                <Container>
+                    
+                </Container>
+              </Container>
         )
     }
 }
 
 
 
-export default AppointmentPicker
+export default AppointmentSearch
