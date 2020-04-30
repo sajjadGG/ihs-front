@@ -64,17 +64,30 @@ class ProfilePatient extends React.Component{
                 </div>
                 <input type='text' placeholder='سید رضا موسویان' className={!this.state.editableMyPage?"fixed":""} onChange={(name)=>this.toggleNameMyPage(name)} value={this.state.myPageName}/>
             </div>;
-        const reminderPage= <div className='reminder-page-info'>
+        const reminderPage=
+            <div className='doctor-document-info container-info-patient'>
 
+            <div className='reminder-page-info profile-items'>
+            <div className='nothing-show'>
+                <i className='fas fa-low-vision'/>
+                <h1>
+                    موردی یافت نشد
+                </h1>
+            </div>
+            </div>
         </div>;
 
         //todo:check it if is not empty
-        const doctorDocument = <div className='doctor-document-info container-info-patient'>
+        const doctorDocument =
+            <div className='doctor-document-info container-info-patient'>
+            <div className='doctorDocumen-page-info profile-items'>
+
             <div className='nothing-show'>
                 <i className='fas fa-low-vision'/>
                 <h1>
                 موردی یافت نشد
                 </h1>
+            </div>
             </div>
         </div>;
 
@@ -83,7 +96,7 @@ class ProfilePatient extends React.Component{
             showPage = myPageInfo;
         }
         else if(this.state.activeBar ===this.reminderRef){
-
+        showPage=reminderPage;
         }
         else if(this.state.activeBar ===this.doctorDocument){
         showPage=doctorDocument;

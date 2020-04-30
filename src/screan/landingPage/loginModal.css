@@ -9,13 +9,30 @@
     border-radius: 10px;
     box-shadow: 2px 5px 10px grey;
 }
-.doctor-login{
-    background-image: url("../../assets/image/DForm.jpg");
+.bg{
+position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    filter: blur(4px);
 }
-.patient-login{
-    background-image: url("../../assets/image/PForm2.jpg");
+.bgp{
+        background-image: url("../../assets/image/baner.jpg");
 
 }
+.bgd{
+    background-image: url("../../assets/image/doctorForm.jpg");
+
+}
+
+/*.doctor-login{*/
+/*    background-image: url("../../assets/image/doctorForm.jpg");*/
+/*}*/
+/*.patient-login{*/
+/*    background-image: url("../../assets/image/baner.jpg");*/
+/*}*/
 .hide{
     animation: fadeModal 1s forwards;
 }
@@ -85,6 +102,7 @@
     align-items: center;
     margin: 10% auto;
 }
+
 .items-form{
      display: flex;
      flex-direction: column;
@@ -168,11 +186,12 @@
 .login-btn{
     margin: 15px;
     padding: 10px 20px;
-    background-image: linear-gradient(to right, #11998e, #38ef7d);
+    background-image: linear-gradient(to right, #29f524, #71f573, #29f524);
     color: white;
     font-size: 1.2em;
     border: none;
     border-radius: 5px;
+    z-index: 3;
 }
 .login-btn:hover{
     animation: 1s btn-scale forwards;
@@ -185,7 +204,11 @@
     }
     100%{
         transform: scaleX(1);
+        border-radius: 10px;
     }
 
+}
+.container-form-item input{
+    background-color: rgba(0,0,0,.0)!important;
 }
 
