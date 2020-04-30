@@ -10,8 +10,14 @@
     width: 70%;
     justify-content: space-between;
     margin: 0 auto;
+    text-align: center;
 }
 .items-header-mainPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     font-size:30px;
     color:gray;
     margin: 20px;

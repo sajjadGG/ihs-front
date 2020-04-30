@@ -54,6 +54,10 @@ class ProfilePatient extends React.Component{
      this.getData();
     };
 
+    addFriend=()=>{
+        this.props.history.push("/searchfriend");
+    };
+
     render() {
         //create page under bar
         const myPageInfo=
@@ -113,19 +117,24 @@ class ProfilePatient extends React.Component{
                     <div className={'event'} >
                         <i className="fa fa-envelope-o "><span>+20</span></i>
                     </div>
+                    <div className={'event addFriends'} onClick={this.addFriend} >
+                        <i className="fas fa-users "/>
+                    </div>
                 </div>
                 <div className='header-mainPage'>
                     <div className={this.state.activeBar===this.myPageRef?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.myPageRef)} ref={this.myPageRef}>
-                        <i className="fas fa-user-circle"><span>صفحه من</span></i>
+                        <i className="fas fa-user-circle"/>
+                        <span> من</span>
                     </div>
                     <div className={this.state.activeBar===this.reminderRef?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.reminderRef)} ref={this.reminderRef}>
-                        <i className="fa fa-bell"><span>یادآوری</span></i>
+                        <i className="fa fa-bell"/>
+                        <span>یادآوری</span>
                     </div>
                     <div className={this.state.activeBar===this.doctorDocument?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorDocument)} ref={this.doctorDocument}>
-                        <i className="far fa-id-card"><span>پرونده پزشکی</span></i>
+                        <i className="far fa-id-card"/><span>پرونده پزشکی</span>
                     </div>
                     <div className={this.state.activeBar===this.doctorSearch?'items-header-mainPage active-item':'items-header-mainPage'} onClick={()=>this.changeActiveBar(this.doctorSearch)} ref={this.doctorSearch}>
-                        <i className="fa fa-user-md"><span>جستو جوی پزشک</span></i>
+                        <i className="fa fa-user-md"/><span>جستو جوی پزشک</span>
                     </div>
 
 

@@ -1,0 +1,14 @@
+.container-added-friend-card{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+.container-avatar-friends{
+    margin: 20px;
+}
+.scale-les{
+    transform: scale(.5);
+}
