@@ -17,6 +17,7 @@ import './style.css'
 import ProfilePatient from "./screan/Patient/profile/profilePatient";
 import SearchDoctor from "./screan/Patient/searchDoctor/searchDoctor";
 import DoctorProfileFromPatient from "./screan/Doctor/DoctorProfileView/DoctorProfileFromPatient";
+import SearchFriend from "./screan/Patient/searchFriend/searchFriend";
 
 
 import AppointmentPicker from "./components/AppointmentPicker"
@@ -34,6 +35,7 @@ ReactDOM.render(
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
+            <Route exact path='/searchfriend' component={SearchFriend}/>
             {/*<Route exact path='/doctorPage/:id' component={DoctorPage}/>*/}
             <Route exact path='/doctorPage/:id' component={DoctorProfileFromPatient}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>

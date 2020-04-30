@@ -21,7 +21,6 @@ render() {
     console.log(showDoctor);
     return(
         <div className='row'>
-
         <div className='container container-fluid doctor-profile-page col-md-3'>
                   <div className="card-body">
                   <img class="card-img-top" src={showDoctor.avatar} alt={showDoctor.userfullname} style={{height:'200px' ,width:'200px'}}/>
@@ -30,9 +29,7 @@ render() {
                         <h2>تخصص: {showDoctor.speciality} </h2>
                         <h3>نظام پزشکی: {showDoctor.medicalCouncilId} </h3>
                     </div>
-
               </div>
-
               </div>
         <div className='container container-fluid doctor-profile-page col-md-8'>
                   <div className="card-body">

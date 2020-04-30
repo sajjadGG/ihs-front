@@ -45,4 +45,6 @@ export const Helper = {
 
     localURL: LOCAL_URL,
     authtype : 'Token ',
-}
+    following:BASE_URL+'follower/?follower=',
+    getUsers:BASE_URL+'patients/?name=',
+};

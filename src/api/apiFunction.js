@@ -1,5 +1,6 @@
 import {Helper} from './urlApi';
 import axios from 'axios';
+import {getToken} from "../functions/saveDataLocalStorage/localStorageFunction";
 
 export const signUp = async ({username,password,firstName='',lastName='',email='',userType})=>{
     console.log('hiiiiii');
@@ -135,6 +136,39 @@ export const postMessage = async({sender , receiver,text})=>{
     .then(response => response.json())
     .catch(error => console.log('error', error));
     return data;
+};
+
+//get friend of user
+//    http://demo-ihs.herokuapp.com/api/follower/?follower=john
+export const getFrindes = async ({followe})=>{
+    const token = await getToken();
+
+    const req=axios.get(Helper.following+followe,{
+        headers:{
+            Authorization:Helper.authtype+token,
+        },
+    });
+    const result = await req;
+    if(result.statusText.toLowerCase()==='ok'){
+        console.log(result.data);
+        return result.data;
+    }
+};
+
+//searchUsers
+
+export const searchUser=async ({id})=>{
+    const token = await getToken();
+    const req = axios.get(Helper.getUsers+id,{
+        headers:{Authorization:Helper.authtype+token}
+    });
+    const res = await req;
+    if(res.statusText.toLowerCase()==='ok'){
+        console.log(res);
+        return res.data;
+    }
+};
+
 }
 
 export const postClinic = async({name , description,address , city, longitude,latitude})=>{

@@ -22,7 +22,7 @@ class SideProfile extends React.Component {
     async componentDidMount(){
         console.log("didMount!!!");
         const dataUser = await getuserData({username : this.state.name})
-        console.log(dataUser)
+        console.log(dataUser);
         this.setState({
             "fullName" : dataUser.full_name,
             "email" : dataUser.email

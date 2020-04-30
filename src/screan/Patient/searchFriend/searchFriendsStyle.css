@@ -1,0 +1,37 @@
+.container-search-friend{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.main-part-serach-friend{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+.friends-added{
+    width: 25%;
+    height: 100% ;
+    /*position: absolute;*/
+    top: 0;
+    right: 0 ;
+    background-image:linear-gradient(to bottom, rgb(246, 255, 250),whitesmoke,white);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px grey;
+
+}
+
+
+/*side for added friend*/
+.friends-added{
+    overflow-y: scroll;
+}
+.container-searched-friend{
+    width: 90%;
+    margin: 0 auto;
+
+}
+.card-searched{
+    margin: 0 20px;
+}
