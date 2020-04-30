@@ -1,5 +1,5 @@
 import React from "react";
-import CardDoctor from "./doctorCard";
+import CardDoctor from "../../screan/Doctor/DoctorCard/doctorCard";
 
 class LsitCardDoctor extends React.Component{
     constructor(props) {
@@ -25,8 +25,9 @@ class LsitCardDoctor extends React.Component{
                             console.log(itm);
                     newPost.push(
                         <div className="col-md-4" key={itm.userId}>
-                    <CardDoctor medicalCouncilId={itm.medicalCouncilId} name={itm.userfullname} key={itm.userId} id={itm.userId} avatar={itm.avatar} user={itm.user} speciality={itm.speciality}/>
-                    </div>
+                    {/*<CardDoctor medicalCouncilId={itm.medicalCouncilId} name={itm.userfullname} key={itm.userId} id={itm.userId} avatar={itm.avatar} user={itm.user} speciality={itm.speciality}/>*/}
+                    <CardDoctor name={itm.userfullname} avatar={itm.avatar} speciality={itm.speciality} user={itm.user} id={itm.userId}/>
+                        </div>
                     )
                         });
             this.setState({

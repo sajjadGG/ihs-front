@@ -1,9 +1,9 @@
 import React from 'react';
-import LoginPage from "./screan/loginPage/loginPage";
+import LandingPage from "./screan/landingPage/landingPage";
 
 function App() {
   return (
-    <LoginPage/>
+    <LandingPage/>
 
   );
 }
