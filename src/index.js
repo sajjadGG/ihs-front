@@ -14,7 +14,8 @@ import CustomNavbar from "./components/Navbar";
 import MessageRoom from "./components/MessageRoom";
 import AppointmentHistory from "./PatientPages/AppointmentHistory"
 import './style.css'
-
+import AppointmentPicker from "./components/AppointmentPicker"
+import {SimpleMap} from "./components/LocationPicker"
 
 const store = createStore(combineReducers(Reducer));
 
