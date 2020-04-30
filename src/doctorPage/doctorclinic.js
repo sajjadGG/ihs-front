@@ -7,6 +7,10 @@ import Button from '@material-ui/core/Button';
 
 import {SimpleMap} from "../components/LocationPicker"
 
+import Box from '@material-ui/core/Box';
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -16,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export  function ValidationTextFields() {
+export  function ClinicForm() {
   const classes = useStyles();
 
   return (
@@ -48,3 +52,31 @@ export  function ValidationTextFields() {
     </Container>
   );
 }
+
+
+
+export  function Clinic(props) {  
+    return (
+      <div >
+        <Box
+        display="flex"
+        flexWrap="nowrap"
+        p={1}
+        m={1}
+        bgcolor="background.paper"
+        css={{ maxWidth: 300 }}
+      >
+        <Box p={1} bgcolor="grey.300">
+          props.name
+        </Box>
+        <Box p={1} bgcolor="grey.300">
+          props.address
+        </Box>
+       
+      </Box>
+      </div>
+    );
+  
+}
+
+
