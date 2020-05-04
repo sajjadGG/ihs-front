@@ -47,7 +47,7 @@ class OwnProfile extends Component{
                                             <span className="td" onClick={()=>this.changePage('/searchfriend')}><i className="material-icons">person_add</i></span>
                                             <span className="td"><i className="material-icons">chat_bubble</i></span>
                                             <span className="td m-active"><i
-                                                className="material-icons">notifications</i></span>
+                                                className="material-icons" onClick={()=>this.changePage('/card')} >notifications</i></span>
                                         </div>
 
                                     </div>

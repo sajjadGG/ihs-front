@@ -20,6 +20,7 @@ import SearchFriend from "./screan/Patient/searchFriend/searchFriend";
 import AppointmentSearch from "./components/AppointmentSearch"
 import {DoctorClinic} from "./doctorPage/doctorclinic"
 import OwnProfile from "./screan/ownPageProfile/ownProfile";
+import Card from "./screan/components/Card/Card";
 
 const store = createStore(combineReducers(Reducer));
 
@@ -31,6 +32,7 @@ ReactDOM.render(
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>
+            <Route exact path='/card' component={Card}/>
             {/*<Route exact path='/doctorPage/:id' component={DoctorPage}/>*/}
             <Route exact path='/doctorPage/:id' component={DoctorProfileFromPatient}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
