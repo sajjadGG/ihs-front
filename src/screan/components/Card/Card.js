@@ -33,13 +33,12 @@ class Card extends React.Component {
                 this.setState({...this.state,more:!this.state.more});
                 // img.classList.remove('active-image');
                 // img.classList.add('normal');
-
-
             }
         });
     };
     render() {
         const {name,avatar,des}=this.props;
+        console.log(des);
         return (
             <div className="card" ref={this.cardRef}>
                 <div className="image">

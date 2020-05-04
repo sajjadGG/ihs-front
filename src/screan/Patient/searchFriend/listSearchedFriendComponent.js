@@ -19,7 +19,7 @@ class ListSearchedFriendComponent extends Component{
            searched.push(
                <div className="col-md-4">
 
-               <Card name={item.userfullname} avatar={item.avatar} user={item.user} dec={"rezagsghg"}/>
+               <Card name={item.userfullname} avatar={item.avatar} user={item.user} des="rezagsghg"/>
                </div>
                )
         });
