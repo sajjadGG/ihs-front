@@ -2,10 +2,26 @@ import React,{Component} from "react";
 
 import './ownProfileStyle.css'
 import SideBar from "../sideBar/sideBard";
+import AvatarImage from "../../functions/returnElement/returnAvatarPic";
+import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
 class OwnProfile extends Component{
     constructor(props) {
         super(props);
+        this.state={
+            name:"",
+            avatar:"",
+        }
     };
+    getData=async ()=>{
+        const data =await getUserData();
+        console.log("hiii",data)
+        if(data){
+            this.setState({...this.state,name:data.full_name,avatar:data.avatar});
+        }
+    };
+    componentDidMount() {
+        this.getData();
+    }
 
     render() {
         return(
@@ -53,9 +69,9 @@ class OwnProfile extends Component{
                     </div>
                     <div id="profile-d">
                         <div id="profile-pic">
-                            <img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg"/>
+                            <AvatarImage name={this.state.name} avatar={this.state.avatar}/>
                         </div>
-                        <div id="u-name">Himalaya Singh</div>
+                        <div id="u-name">{this.state.name?this.state.name:""}</div>
                         <div className="tb" id="m-btns">
                             <div className="td">
                                 <div className="m-btn"><i className="material-icons">format_list_bulleted</i><span>Activity log</span>

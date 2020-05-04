@@ -1109,3 +1109,8 @@ span.td i:hover{
         transform: rotate(10deg);
     }
 }
+#profile-pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
