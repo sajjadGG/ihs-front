@@ -35,22 +35,9 @@ class OwnProfile extends Component{
         return(
             <main>
                 <SideBar/>
-                {/*<div id="device-bar-1">*/}
-                {/*    <button></button>*/}
-                {/*    <button></button>*/}
-                {/*    <button></button>*/}
-                {/*</div>*/}
+
                 <header>
                     <div className="tb">
-                        {/*<div className="td" id="logo">*/}
-                        {/*    <a href="#"><i className="fab fa-facebook-square"></i></a>*/}
-                        {/*</div>*/}
-                        {/*<div className="td" id="search-form">*/}
-                        {/*    <form method="get" action="#">*/}
-                        {/*        <input type="text" placeholder="Search Facebook"/>*/}
-                        {/*            <button type="submit"><i className="material-icons">search</i></button>*/}
-                        {/*    </form>*/}
-                        {/*</div>*/}
                         <div className="td" id="f-name-l"><span> </span></div>
                         <div className="td" id="i-links">
                             <div className="tb">
@@ -151,10 +138,7 @@ class OwnProfile extends Component{
                                 </div>
                             </div>
                             <div id="t-box">
-                                {/*<a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad*/}
-                                {/*Choices</a> <a href="#">Cookies</a> <span id="t-more">More<i*/}
-                                {/*className="material-icons">arrow_drop_down</i></span>*/}
-                                {/*<div id="cpy-nt">Facebook &copy; <span id="curr-year"></span></div>*/}
+
                             </div>
                         </div>
                         <div className="td" id="m-col">
@@ -266,7 +250,6 @@ class OwnProfile extends Component{
                                         <a href="#"><img
                                             src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
                                     </div>
-                                    {/*<div className="on-ct" id="ct-sett"><i className="material-icons">settings</i></div>*/}
                                 </div>
                             </div>
                         </div>
