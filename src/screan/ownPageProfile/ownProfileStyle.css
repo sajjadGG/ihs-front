@@ -187,19 +187,7 @@ header
     cursor: pointer;
 }
 
-#m-td span.m-active:before
-{
-    content: '5';
-    position: absolute;
-    top: -8px;
-    right: 0px;
-    color: #fff;
-    font-size: 12px;
-    padding: 4px 4px 3px 4px;
-    background-color: #ff1e0e;
-    border-radius: 3px;
-    line-height: 1;
-}
+
 
 #i-links i
 {
@@ -262,7 +250,6 @@ header
     border-radius: 3px;
     margin-top: 28px;
     overflow: hidden;
-    box-shadow: 0 0 0 5px #fff;
 }
 
 #profile-pic img

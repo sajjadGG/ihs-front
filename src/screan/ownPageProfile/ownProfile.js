@@ -4,12 +4,14 @@ import './ownProfileStyle.css'
 import SideBar from "../sideBar/sideBard";
 import AvatarImage from "../../functions/returnElement/returnAvatarPic";
 import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
+import {withRouter} from "react-router-dom";
 class OwnProfile extends Component{
     constructor(props) {
         super(props);
         this.state={
             name:"",
             avatar:"",
+            active:"timeline",
         }
     };
     getData=async ()=>{
@@ -22,6 +24,12 @@ class OwnProfile extends Component{
     componentDidMount() {
         this.getData();
     }
+    toggleActive=(input)=>{
+        this.setState({...this.state,active:input})
+    };
+    changePage=(input)=>{
+        this.props.history.push(input)
+    };
 
     render() {
         return(
@@ -43,22 +51,21 @@ class OwnProfile extends Component{
                         {/*            <button type="submit"><i className="material-icons">search</i></button>*/}
                         {/*    </form>*/}
                         {/*</div>*/}
-                        <div className="td" id="f-name-l"><span>Himalaya's facebook</span></div>
+                        <div className="td" id="f-name-l"><span> </span></div>
                         <div className="td" id="i-links">
                             <div className="tb">
                                 <div className="td" id="m-td">
                                     <div className="tb">
-                                        <span className="td"><i className="material-icons">person_add</i></span>
-                                        <span className="td"><i className="material-icons">chat_bubble</i></span>
-                                        <span className="td m-active"><i
-                                            className="material-icons">notifications</i></span>
+                                        <div className='row-reverse'>
+                                            <span className="td" onClick={()=>this.changePage('/searchfriend')}><i className="material-icons">person_add</i></span>
+                                            <span className="td"><i className="material-icons">chat_bubble</i></span>
+                                            <span className="td m-active"><i
+                                                className="material-icons">notifications</i></span>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div className="td">
-                                    <a href="#" id="p-link">
-                                        <img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg"/>
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -73,15 +80,9 @@ class OwnProfile extends Component{
                         </div>
                         <div id="u-name">{this.state.name?this.state.name:""}</div>
                         <div className="tb" id="m-btns">
-                            <div className="td">
-                                <div className="m-btn"><i className="material-icons">format_list_bulleted</i><span>Activity log</span>
-                                </div>
-                            </div>
-                            <div className="td">
-                                <div className="m-btn"><i className="material-icons">lock</i><span>Privacy</span></div>
-                            </div>
+
+
                         </div>
-                        <div id="edit-profile"><i className="material-icons">camera_alt</i></div>
                     </div>
                     <div id="black-grd"></div>
                 </div>
@@ -107,8 +108,7 @@ class OwnProfile extends Component{
                                 <div className="cnt-label">
                                     <i className="l-i" id="l-i-p"></i>
                                     <span>Photos</span>
-                                    <div className="lb-action" id="b-i"><i
-                                        className="material-icons">keyboard_arrow_down</i></div>
+
                                 </div>
                                 <div id="photos">
                                     <div className="tb">
@@ -151,10 +151,10 @@ class OwnProfile extends Component{
                                 </div>
                             </div>
                             <div id="t-box">
-                                <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad
-                                Choices</a> <a href="#">Cookies</a> <span id="t-more">More<i
-                                className="material-icons">arrow_drop_down</i></span>
-                                <div id="cpy-nt">Facebook &copy; <span id="curr-year"></span></div>
+                                {/*<a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad*/}
+                                {/*Choices</a> <a href="#">Cookies</a> <span id="t-more">More<i*/}
+                                {/*className="material-icons">arrow_drop_down</i></span>*/}
+                                {/*<div id="cpy-nt">Facebook &copy; <span id="curr-year"></span></div>*/}
                             </div>
                         </div>
                         <div className="td" id="m-col">
@@ -162,26 +162,25 @@ class OwnProfile extends Component{
                                 <div className="tb">
                                     <div className="td">
                                         <div className="tb" id="p-tabs-m">
-                                            <div className="td active"><i
+                                            <div className={this.state.active==='timeline'?"td active":"td"} onClick={()=>this.toggleActive('timeline')}><i
                                                 className="material-icons">av_timer</i><span>TIMELINE</span></div>
-                                            <div className="td"><i
+                                            <div className={this.state.active==='people'?"td active":"td"} onClick={()=>this.toggleActive('people')}><i
                                                 className="material-icons">people</i><span>FRIENDS</span></div>
-                                            <div className="td"><i
+                                            <div className={this.state.active==='photo'?"td active":"td"} onClick={()=>this.toggleActive('photo')}><i
                                                 className="material-icons">photo</i><span>PHOTOS</span></div>
-                                            <div className="td"><i
+                                            <div className={this.state.active==='about'?"td active":"td"} onClick={()=>this.toggleActive('about')}><i
                                                 className="material-icons">explore</i><span>ABOUT</span></div>
-                                            <div className="td"><i
+                                            <div className={this.state.active==='archive'?"td active":"td"} onClick={()=>this.toggleActive('archive')}><i
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>
                                         </div>
                                     </div>
-                                    <div className="td" id="p-tab-m"><i
-                                        className="material-icons">keyboard_arrow_down</i></div>
+
                                 </div>
                             </div>
                             <div className="m-mrg" id="composer">
                                 <div id="c-tabs-cvr">
                                     <div className="tb" id="c-tabs">
-                                        <div className="td active"><i className="material-icons">subject</i><span>Make Post</span>
+                                        <div className={"td "+this.state.active==='timeline'?"active":""}><i className="material-icons">subject</i><span>Make Post</span>
                                         </div>
                                         <div className="td"><i
                                             className="material-icons">camera_enhance</i><span>Photo/Video</span></div>
@@ -236,19 +235,16 @@ class OwnProfile extends Component{
                                     </div>
                                 </div>
                             </div>
-                            <div id="loading"><i className="material-icons">autorenew</i></div>
                         </div>
                         <div className="td" id="r-col">
                             <div id="chat-bar">
-                                <div id="chat-lb"><i className="material-icons">contacts</i><span>Contacts</span></div>
+                                <div id="chat-lb"><i className="material-icons">contacts</i><span>Friends</span></div>
                                 <div id="cts">
                                     <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
+                                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
                                     </div>
                                     <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
+                                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
                                     </div>
                                     <div className="on-ct">
                                         <a href="#"><img
@@ -270,7 +266,7 @@ class OwnProfile extends Component{
                                         <a href="#"><img
                                             src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
                                     </div>
-                                    <div className="on-ct" id="ct-sett"><i className="material-icons">settings</i></div>
+                                    {/*<div className="on-ct" id="ct-sett"><i className="material-icons">settings</i></div>*/}
                                 </div>
                             </div>
                         </div>
@@ -282,4 +278,4 @@ class OwnProfile extends Component{
     }
 }
 
-export default OwnProfile;
+export default withRouter(OwnProfile);
