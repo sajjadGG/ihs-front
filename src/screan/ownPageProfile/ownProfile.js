@@ -5,6 +5,9 @@ import SideBar from "../sideBar/sideBard";
 import AvatarImage from "../../functions/returnElement/returnAvatarPic";
 import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
 import {withRouter} from "react-router-dom";
+import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
+import QuicMessage from "../components/quickMessage/quickMessage";
+
 class OwnProfile extends Component{
     constructor(props) {
         super(props);
@@ -12,6 +15,8 @@ class OwnProfile extends Component{
             name:"",
             avatar:"",
             active:"timeline",
+            showMessage:false,
+            to:''
         }
     };
     getData=async ()=>{
@@ -31,9 +36,21 @@ class OwnProfile extends Component{
         this.props.history.push(input)
     };
 
+    showqmsg=(input,checkstae)=>{
+    console.log('rese',input);
+    this.setState({...this.state,to : input ,showMessage:checkstae});
+    };
+    closef=()=>{
+        this.setState({...this.state,showMessage:false});
+
+    };
     render() {
+        const temp=[
+            {name:"reza"},
+            {name:"sajjad"},
+        ];
         return(
-            <main>
+            <main >
                 <SideBar/>
 
                 <header>
@@ -98,44 +115,11 @@ class OwnProfile extends Component{
 
                                 </div>
                                 <div id="photos">
-                                    <div className="tb">
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div className="l-cnt l-mrg">
-                                <div className="cnt-label">
-                                    <i className="l-i" id="l-i-k"></i>
-                                    <span>Did You Know<i id="k-nm">1</i></span>
-                                </div>
-                                <div>
-                                    <div className="q-ad-c">
-                                        <a href="#" className="q-ad">
-                                            <img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png"/>
-                                                <span>My favorite superhero is...</span>
-                                        </a>
-                                    </div>
-                                    <div className="q-ad-c">
-                                        <a href="#" className="q-ad" id="add_q">
-                                            <i className="material-icons">add</i>
-                                            <span>Add Answer</span>
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                             <div id="t-box">
 
@@ -223,39 +207,17 @@ class OwnProfile extends Component{
                         <div className="td" id="r-col">
                             <div id="chat-bar">
                                 <div id="chat-lb"><i className="material-icons">contacts</i><span>Friends</span></div>
-                                <div id="cts">
-                                    <div className="on-ct active">
-                                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                </div>
+                                  <ListFriendsProfile friends={temp} onclick={this.showqmsg}/>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div onClick={this.closef}>
+                    <QuicMessage show={this.state.showMessage} to={this.state.to} />
+                </div>
+
             </main>
+
         );
 
     }

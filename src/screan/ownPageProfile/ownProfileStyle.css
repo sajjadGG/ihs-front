@@ -1000,6 +1000,12 @@ header
     font-size: 16px;
     text-align: center;
     margin: 23px 0px;
+    cursor: pointer;
+    transition: .4s ease-in;
+    position: relative;
+}#chat-lb:hover
+{
+transform: scale(.8);
 }
 
 #chat-lb i
@@ -1100,4 +1106,10 @@ span.td i:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#cts .on-ct .nothing-show i{
+    color: grey;
+    font-size: 1.5em
+;
 }
