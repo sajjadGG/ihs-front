@@ -1111,3 +1111,12 @@ span.td i:hover{
     font-size: 1.5em
 ;
 }
+
+i.material-icons:hover{
+    color: black;
+}
+.items-intro{
+    background: none;
+    border-width: 0;
+    border-bottom: 1px solid black;
+}

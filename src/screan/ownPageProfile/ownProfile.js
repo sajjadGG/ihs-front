@@ -16,12 +16,15 @@ class OwnProfile extends Component{
             avatar:"",
             active:"timeline",
             showMessage:false,
-            to:''
+            to:'',
+            changeInfo:false,
+            di:true,
+            age:19,
+            dec:''
         }
     };
     getData=async ()=>{
         const data =await getUserData();
-        console.log("hiii",data)
         if(data){
             this.setState({...this.state,name:data.full_name,avatar:data.avatar});
         }
@@ -37,18 +40,54 @@ class OwnProfile extends Component{
     };
 
     showqmsg=(input,checkstae)=>{
-    console.log('rese',input);
     this.setState({...this.state,to : input ,showMessage:checkstae});
     };
     closef=()=>{
         this.setState({...this.state,showMessage:false});
     };
 
+    changeInfo=()=>{
+        this.setState({...this.state,di:!this.state.di});
+
+    };
+    toggleInput(obj){
+
+        console.log("sdfs",obj)
+      this.setState(obj);
+    };
     render() {
         const temp=[
             {name:"reza"},
             {name:"sajjad"},
         ];
+        const showFixed=
+            <div>
+            <div className="cnt-label">
+                <i className="l-i" id="l-i-i"></i>
+                <span>Intro</span>
+                <div className="lb-action"><i className="material-icons" onClick={this.changeInfo}>edit</i></div>
+            </div>
+            <div id="i-box">
+                <div className='container-intro'>
+                <label>FullName</label>
+            <input  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,name:e.target.value})} value={this.state.name} />
+            <label>Age</label>
+            <input value={this.state.age}  min='18'  max='100' type='number' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,age:e.target.value})}/>
+
+                </div>
+                <div className='container-intro'>
+                    <label>diseas history</label>
+                    <input  type='text' disabled={true} className='items-intro'  />
+                </div>
+                <div className='container-intro'>
+                    <label>description</label>
+                    <textarea  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,dec:e.target.value})} value={this.state.dec} />
+                </div>
+
+                </div>
+    </div>;
+
+
         return(
             <div className='container'>
 
@@ -96,19 +135,7 @@ class OwnProfile extends Component{
                     <div className="tb">
                         <div className="td" id="l-col">
                             <div className="l-cnt">
-                                <div className="cnt-label">
-                                    <i className="l-i" id="l-i-i"></i>
-                                    <span>Intro</span>
-                                    <div className="lb-action"><i className="material-icons">edit</i></div>
-                                </div>
-                                <div id="i-box">
-                                    <div id="intro-line">Web developer - UI</div>
-                                    <div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and
-                                        inspiring other companies to do so :)
-                                    </div>
-                                    <div id="u-loc"><i className="material-icons">location_on</i><a
-                                        href="#">Bengaluru</a>, <a href="#">India</a></div>
-                                </div>
+                                {showFixed}
                             </div>
                             <div className="l-cnt l-mrg">
                                 <div className="cnt-label">
