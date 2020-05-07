@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-//added for import the styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from 'react-redux' ;
 import Reducer from './reducer/reducer';
@@ -21,28 +20,25 @@ import AppointmentSearch from "./components/AppointmentSearch"
 import {DoctorClinic} from "./doctorPage/doctorclinic"
 import OwnProfile from "./screan/ownPageProfile/ownProfile";
 import Card from "./screan/components/Card/Card";
+import SearchedUserView from "./screan/searchedUserView/searchedUserView";
 
 const store = createStore(combineReducers(Reducer));
 
 ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-            {/*<CustomNavbar/>*/}
             <Route exact path='/' component={App}/>
-            {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>
             <Route exact path='/card' component={Card}/>
-            {/*<Route exact path='/doctorPage/:id' component={DoctorPage}/>*/}
             <Route exact path='/doctorPage/:id' component={DoctorProfileFromPatient}/>
+            <Route exact path='/test2' component={SearchedUserView}/>
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>
             <Route exact path='/test' component={() => <DoctorClinic clinics={[{name : "شوش" , lng:23 , lat:12} , {name : "تهران پارس" , lng:23 , lat:12}]}/>}/>
             <Route exact path='/profielpatient' component={OwnProfile}/>
-            {/*<Route exact path='/profielpatient' component={ProfilePatient}/>*/}
             <Route exact path='/date' component={AppointmentSearch}/>
             <Route exact path='/app'> <AppointmentHistory records = {[{Num:'1', Docter:'محمد', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'انجام شده'},{Num:'2', Docter:'رضا', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا موفق'},{Num:'3', Docter:'حسن', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'رزرو شده'},{Num:'4', Docter:'غلام', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا مشخص'}]} /></Route>
         </BrowserRouter>
-        {/*<App/>*/}
       </Provider>,
   document.getElementById('root')
 );

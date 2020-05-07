@@ -45,7 +45,6 @@ class ListFriendsProfile extends Component{
                 this.setItems(this.props.friends);
             }
             else if(this.props.friends.length===0){
-                console.log("dghasjhd")
                 this.nothing();
             }
         }

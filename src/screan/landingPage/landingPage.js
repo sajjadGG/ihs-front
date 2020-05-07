@@ -402,7 +402,6 @@ class LandingPage extends React.Component{
                 {showLoginDoctor}
                 {showLoginPatient}
 
-                <WrongInfo textInfo={this.state.showAlertWrongText} className={this.state.showAlertWrong?'show-alert':'hide-alert'}/>
 
             </div>
         );

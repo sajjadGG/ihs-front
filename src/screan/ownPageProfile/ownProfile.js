@@ -42,15 +42,17 @@ class OwnProfile extends Component{
     };
     closef=()=>{
         this.setState({...this.state,showMessage:false});
-
     };
+
     render() {
         const temp=[
             {name:"reza"},
             {name:"sajjad"},
         ];
         return(
-            <main >
+            <div className='container'>
+
+            <main>
                 <SideBar/>
 
                 <header>
@@ -212,11 +214,12 @@ class OwnProfile extends Component{
                         </div>
                     </div>
                 </div>
-                <div onClick={this.closef}>
-                    <QuicMessage show={this.state.showMessage} to={this.state.to} />
+                <div >
+                    <QuicMessage show={this.state.showMessage} to={this.state.to} onClick={this.closef}/>
                 </div>
 
             </main>
+            </div>
 
         );
 
