@@ -7,6 +7,8 @@ import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunc
 import {withRouter} from "react-router-dom";
 import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
 import QuicMessage from "../components/quickMessage/quickMessage";
+import {updateDataUser} from "../../api/apiFunction";
+import SideUp from "../components/sideUp/sideUp";
 
 class OwnProfile extends Component{
     constructor(props) {
@@ -20,8 +22,13 @@ class OwnProfile extends Component{
             changeInfo:false,
             di:true,
             age:19,
-            dec:''
+            dec:'',
+            test:false
         }
+    };
+    test1=()=>{
+        console.log(this.state)
+        this.setState({...this.state,test:!this.state.test});
     };
     getData=async ()=>{
         const data =await getUserData();
@@ -55,6 +62,14 @@ class OwnProfile extends Component{
         console.log("sdfs",obj)
       this.setState(obj);
     };
+    updateData=async ()=>{
+        const {username}=await getUserData();
+
+        const req= updateDataUser({fullname:"rezx",user:username});
+        req.then((data)=>{
+        }).catch((e)=>console.error(e));
+
+    };
     render() {
         const temp=[
             {name:"reza"},
@@ -71,6 +86,7 @@ class OwnProfile extends Component{
                 <div className='container-intro'>
                 <label>FullName</label>
             <input  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,name:e.target.value})} value={this.state.name} />
+
             <label>Age</label>
             <input value={this.state.age}  min='18'  max='100' type='number' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,age:e.target.value})}/>
 
@@ -84,6 +100,9 @@ class OwnProfile extends Component{
                     <textarea  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,dec:e.target.value})} value={this.state.dec} />
                 </div>
 
+                </div>
+                <div className='container-intro'>
+                    <button className={!this.state.di?"btn-send show-btn":"btn-send hide-btn"} onClick={this.updateData}>send</button>
                 </div>
     </div>;
 
@@ -235,7 +254,7 @@ class OwnProfile extends Component{
                         </div>
                         <div className="td" id="r-col">
                             <div id="chat-bar">
-                                <div id="chat-lb"><i className="material-icons">contacts</i><span>Friends</span></div>
+                                <div id="chat-lb"><i className="material-icons" onClick={this.test1}>contacts</i><span>Friends</span></div>
                                   <ListFriendsProfile friends={temp} onclick={this.showqmsg}/>
                             </div>
                         </div>
@@ -243,6 +262,7 @@ class OwnProfile extends Component{
                 </div>
                 <div >
                     <QuicMessage show={this.state.showMessage} to={this.state.to} onClick={this.closef}/>
+
                 </div>
 
             </main>
