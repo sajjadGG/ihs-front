@@ -1,12 +1,10 @@
 //todo: insert function for search
 import React from "react";
-import { render } from "react-dom";
 import {Button, Container , Row , FormLabel} from 'react-bootstrap'
 import Divider from '@material-ui/core/Divider';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import "./componentStyle.css"
@@ -14,7 +12,6 @@ import "./componentStyle.css"
 import { DatePicker } from "jalali-react-datepicker";
 import {getAppointment} from "../api/apiFunction";
 import SideUp from "../screan/components/sideUp/sideUp";
-import QuicMessage from "../screan/components/quickMessage/quickMessage";
 import SideBar from "../screan/sideBar/sideBard";
 
 const useStyles = makeStyles((theme) => ({

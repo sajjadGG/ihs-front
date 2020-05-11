@@ -88,7 +88,8 @@ class LandingPage extends React.Component{
             // this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
             await setLoginData(dataLogin);
             if(dataLogin.type==="patient"){
-                this.props.history.push("/profielpatient");
+                // this.props.history.push("/profielpatient");
+                this.props.history.push("/doctorprofile");
             }
             // setTimeout(()=>{
             //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});

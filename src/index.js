@@ -21,6 +21,7 @@ import {DoctorClinic} from "./doctorPage/doctorclinic"
 import OwnProfile from "./screan/ownPageProfile/ownProfile";
 import Card from "./screan/components/Card/Card";
 import SearchedUserView from "./screan/searchedUserView/searchedUserView";
+import OwnProfileDoctor from "./screan/Doctor/ownDoctorProfile/ownPageProfile/ownProfile";
 
 const store = createStore(combineReducers(Reducer));
 
@@ -37,6 +38,7 @@ ReactDOM.render(
             <Route exact path='/test' component={() => <DoctorClinic clinics={[{name : "شوش" , lng:23 , lat:12} , {name : "تهران پارس" , lng:23 , lat:12}]}/>}/>
             <Route exact path='/profielpatient' component={OwnProfile}/>
             <Route exact path='/date' component={AppointmentSearch}/>
+            <Route exact path='/doctorprofile' component={OwnProfileDoctor}/>
             <Route exact path='/app'> <AppointmentHistory records = {[{Num:'1', Docter:'محمد', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'انجام شده'},{Num:'2', Docter:'رضا', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا موفق'},{Num:'3', Docter:'حسن', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'رزرو شده'},{Num:'4', Docter:'غلام', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا مشخص'}]} /></Route>
         </BrowserRouter>
       </Provider>,
