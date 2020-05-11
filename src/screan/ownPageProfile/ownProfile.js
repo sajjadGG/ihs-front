@@ -122,6 +122,7 @@ class OwnProfile extends Component{
                                     <div className="tb">
                                         <div className='row-reverse'>
                                             <span className="td" onClick={()=>this.changePage('/searchfriend')}><i className="material-icons">person_add</i></span>
+                                            <span className="td" onClick={()=>this.changePage('/date')}><i className="fa fa-stethoscope"/></span>
                                             <span className="td"><i className="material-icons">chat_bubble</i></span>
                                             <span className="td m-active"><i
                                                 className="material-icons" onClick={()=>this.changePage('/card')} >notifications</i></span>

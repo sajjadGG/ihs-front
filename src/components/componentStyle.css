@@ -22,3 +22,7 @@
 .pull-left{
   display: inline;
 }
+
+.search-doctor-input::placeholder{
+    color: black;
+}
