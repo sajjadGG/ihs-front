@@ -95,6 +95,7 @@ body{
     background-size: cover;
     height: 20px;
     top: -8px;
+    display: inline;
     border-radius: 100%;
  
 }
@@ -235,6 +236,9 @@ body{
 .nav-link{
     cursor: pointer;
 
+}
+.nav-item .active{
+    display:inline-block;
 }
 .nav-tabs{
     justify-content: center;
