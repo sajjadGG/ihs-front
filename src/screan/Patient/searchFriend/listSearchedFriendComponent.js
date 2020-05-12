@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import SearchFriend from "./searchFriend";
 import Searchedfriend from "./searchedFriendComponent";
 import CardDoctor from "../../Doctor/DoctorCard/doctorCard";
+import Card from "../../components/Card/Card";
 class ListSearchedFriendComponent extends Component{
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class ListSearchedFriendComponent extends Component{
            searched.push(
                <div className="col-md-4">
 
-               <Searchedfriend name={item.userfullname} avatar={item.avatar} user={item.user}/>
+               <Card name={item.userfullname} avatar={item.avatar} user={item.user} des="rezagsghg"/>
                </div>
                )
         });

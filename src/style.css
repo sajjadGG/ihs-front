@@ -9,7 +9,7 @@ body{
 }
 @font-face {
     font-family: bn;
-    src: url(./assets/B-NAZANIN.TTF);
+    src: url(./assets/B-NAZANIN.ttf);
 
 }
 
@@ -57,4 +57,8 @@ html {
 
 .hide-btn{
     background-color: rgba(0,0,0,.0);
+}
+.row-reverse{
+    display: flex;
+    flex-direction: row-reverse;
 }

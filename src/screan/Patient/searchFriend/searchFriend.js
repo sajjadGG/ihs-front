@@ -4,6 +4,7 @@ import {getFrindes, searchUser} from "../../../api/apiFunction";
 import ListAddedFriendCard from "./listAddedFriendCard";
 import {getUserData} from "../../../functions/saveDataLocalStorage/localStorageFunction";
 import ListSearchedFriendComponent from "./listSearchedFriendComponent";
+import SideBar from "../../sideBar/sideBard";
 
 class SearchFriend extends Component{
     constructor(props) {
@@ -36,7 +37,8 @@ class SearchFriend extends Component{
 
     render() {
         return(
-            <div className='container-search-friend'>
+            <div className='container-search-friend container'>
+                <SideBar/>
                <div className='main-part-serach-friend'>
                    <div className='searchbar-container'>
                        <input className='search-input' value={this.state.searchTermBarValue} onChange={this.toggleSearchInput}/>
@@ -47,9 +49,9 @@ class SearchFriend extends Component{
                        <ListSearchedFriendComponent datas={this.state.searched}/>
                    </div>
                </div>
-                <div className='friends-added'>
-                    <ListAddedFriendCard friends={this.state.listFriends}/>
-                </div>
+                {/*<div className='friends-added'>*/}
+                {/*    <ListAddedFriendCard friends={this.state.listFriends}/>*/}
+                {/*</div>*/}
             </div>
         )
     }

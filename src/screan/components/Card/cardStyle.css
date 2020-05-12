@@ -1,0 +1,158 @@
+.card {
+    position: relative;
+    height: 470px;
+    width: 340px;
+    display: block;
+    background: white;
+    box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: 0.4s linear;
+    margin: 20px 0;
+}
+
+.card:hover {
+    box-shadow: 0 1px 35px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card .image {
+    background: black;
+    height: 400px;
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    transition: 0.4s linear;
+}
+
+.active-image {
+    height: 50%;
+    transition: 1s ease;
+}
+
+.normal {
+    height: 100%;
+    transition: 1s ease;
+}
+
+@keyframes imgResize {
+    0% {
+        height: 100%;
+    }
+    10% {
+        height: 80% !important;
+    }
+    50% {
+        height: 60% !important;
+    }
+    100% {
+        height: 50% !important;
+    }
+}
+
+.card:hover .image img {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+
+.card .content {
+    position: absolute;
+    bottom: 0;
+    background: white;
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.bottom .active {
+    animation: show 1s forwards;
+}
+
+@keyframes show {
+    0% {
+        display: inline;
+        opacity: 0;
+        height: 0%;
+    }
+    100% {
+        opacity: 1;
+        height: 100%;
+    }
+}
+
+.content .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.content {
+    width: 100%;
+}
+
+.content .sub-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e74c3c;
+}
+
+.content .bottom p {
+    color: #666666;
+    text-align: center;
+    line-height: 1.8em;
+    font-size: 16px;
+}
+
+.bottom button {
+    cursor: pointer;
+    float: left;
+    padding: 7px 15px;
+    margin: 10px 0;
+    background: #e74c3c;
+    color: white;
+    transition: .3s linear;
+    border: none;
+}
+.btn-action{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.bottom button.follow{
+    background: #4a59e7;
+
+}
+
+.bottom button:hover {
+    transform: scale(.9);
+}
+
+.active {
+    display: none;
+}
+
+.up{
+    animation: upshow .2s forwards ease-in;
+}
+@keyframes upshow {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+
+}
+.down{
+    animation: downshow .2s forwards ease-in;
+}
+@keyframes downshow {
+    0%{
+        transform: rotate(180deg);
+
+    }
+    100%{
+        transform: rotate(0);
+    }
+
+}

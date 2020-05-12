@@ -1,5 +1,6 @@
 import React,{Component} from "react";
-import AddedFriendCard from "./addedFriendComponentCard";
+import Card from "../../components/Card/Card";
+// import AddedFriendCard from "./addedFriendComponentCard";
 class ListAddedFriendCard extends Component{
     constructor(props) {
         super(props);
@@ -15,7 +16,11 @@ class ListAddedFriendCard extends Component{
         const {friends} =this.props;
         friends.forEach((item)=>{
              listFriend.push(
-                 <div className='container-avatar-friends'> <AddedFriendCard name={item.followee}/></div>)
+                 // <div className='container-avatar-friends'> <AddedFriendCard name={item.followee}/></div>)
+                 <div className='container-avatar-friends'>
+                     <Card name={"reza"} des={"afhsdhjd"} avatar={null}/>
+                 </div>)
+
         });
         this.setState({...this.state,showFriends:listFriend});
         }
