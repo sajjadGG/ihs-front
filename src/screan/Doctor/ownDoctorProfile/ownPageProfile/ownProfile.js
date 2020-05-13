@@ -6,6 +6,9 @@ import SideBar from "../../../sideBar/sideBard";
 import AvatarImage from "../../../../functions/returnElement/returnAvatarPic";
 import ListFriendsProfile from "../../../components/listFriendProfile/listFriendsProfile";
 import QuicMessage from "../../../components/quickMessage/quickMessage";
+import MyPatientsList from "../components/MyPatients/MyPatientsList";
+import MyReservedList from "../components/Reserved/MyReservedList";
+import AddClinic from "../components/addClinic/AddClinic";
 
 
 class OwnProfileDoctor extends Component{
@@ -14,18 +17,21 @@ class OwnProfileDoctor extends Component{
         this.state={
             name:"",
             avatar:"",
-            active:"timeline",
+            active:"people",
             showMessage:false,
             to:'',
             changeInfo:false,
             di:true,
             age:19,
             dec:'',
-            test:false
+            test:false,
+            myPatient:<MyPatientsList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45",prescription:"hfsdsdhfsdk"},{name:"reza",date:"1398/01/02",time:"3:10",prescription:"hfsdsdhfsdk"}]}/>,
+            addClinic:<AddClinic/>,
+            reserved:<MyReservedList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45" ,clinic:"test"},{name:"reza",date:"1398/01/02",time:"3:10",clinic: "tes22"}]} />,
+            activeBar:<MyPatientsList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45" ,clinic:"test"},{name:"reza",date:"1398/01/02",time:"3:10",clinic: "tes22"}]} />
         }
     };
     test1=()=>{
-        console.log(this.state)
         this.setState({...this.state,test:!this.state.test});
     };
     getData=async ()=>{
@@ -37,8 +43,8 @@ class OwnProfileDoctor extends Component{
     componentDidMount() {
         this.getData();
     }
-    toggleActive=(input)=>{
-        this.setState({...this.state,active:input})
+    toggleActive=(input,show)=>{
+        this.setState({...this.state,active:input,activeBar:show})
     };
     changePage=(input)=>{
         this.props.history.push(input)
@@ -177,82 +183,33 @@ class OwnProfileDoctor extends Component{
                                 <div className="tb">
                                     <div className="td">
                                         <div className="tb" id="p-tabs-m">
-                                            <div className={this.state.active==='timeline'?"td active":"td"} onClick={()=>this.toggleActive('timeline')}><i
-                                                className="material-icons">av_timer</i><span>Feserved</span></div>
-                                            <div className={this.state.active==='people'?"td active":"td"} onClick={()=>this.toggleActive('people')}><i
+                                            <div className={this.state.active==='timeline'?"td active":"td"} onClick={()=>this.toggleActive('timeline',this.state.reserved)}><i
+                                                className="material-icons">av_timer</i><span>Reserved</span></div>
+                                            <div className={this.state.active==='people'?"td active":"td"} onClick={()=>this.toggleActive('people',this.state.myPatient)}><i
                                                 className="material-icons">people</i><span>My Patients</span></div>
                                             <div className={this.state.active==='photo'?"td active":"td"} onClick={()=>this.toggleActive('photo')}><i
                                                 className="material-icons">photo</i><span>PHOTOS</span></div>
 
                                             <div className={this.state.active==='archive'?"td active":"td"} onClick={()=>this.toggleActive('archive')}><i
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>
+
+                                            <div className={this.state.active==='addclinic'?"td active":"td"} onClick={()=>this.toggleActive('addclinic',this.state.addClinic)}><i
+                                                className="fa fa-h-square"/><span>َAdd clinic</span></div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                            <div className="m-mrg" id="composer">
-                                <div id="c-tabs-cvr">
-                                    <div className="tb" id="c-tabs">
-                                        <div className={"td "+this.state.active==='timeline'?"active":""}><i className="material-icons">subject</i><span>Make Post</span>
-                                        </div>
-                                        <div className="td"><i
-                                            className="material-icons">camera_enhance</i><span>Photo/Video</span></div>
-                                        <div className="td"><i
-                                            className="material-icons">videocam</i><span>Live Video</span></div>
-                                        <div className="td"><i
-                                            className="material-icons">event</i><span>Life Event</span></div>
-                                    </div>
-                                </div>
-                                <div id="c-c-main">
-                                    <div className="tb">
-                                        <div className="td" id="p-c-i"><img
-                                            src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg"
-                                            alt="Profile pic"/></div>
-                                        <div className="td" id="c-inp">
-                                            <input type="text" placeholder="What's on your mind?"/>
-                                        </div>
-                                    </div>
-                                    <div id="insert_emoji"><i className="material-icons">insert_emoticon</i></div>
-                                </div>
-                            </div>
+
                             <div>
                                 <div className="post">
-                                    <div className="tb">
-                                        <a href="#" className="td p-p-pic"><img
-                                            src="https://imagizer.imageshack.com/img923/2452/zifFKH.jpg"
-                                            alt="Rajeev's profile pic"/></a>
-                                        <div className="td p-r-hdr">
-                                            <div className="p-u-info">
-                                                <a href="#">Rajeev Singh</a> shared a memory with <a href="#">Himalaya
-                                                Singh</a>
-                                            </div>
-                                            <div className="p-dt">
-                                                <i className="material-icons">calendar_today</i>
-                                                <span>January 28, 2015</span>
-                                            </div>
-                                        </div>
-                                        <div className="td p-opt"><i className="material-icons">keyboard_arrow_down</i>
-                                        </div>
-                                    </div>
-                                    <a href="#" className="p-cnt-v">
-                                        <img src="https://imagizer.imageshack.com/img923/8568/6LwtUa.jpg"/>
-                                    </a>
-                                    <div>
-                                        <div className="p-acts">
-                                            <div className="p-act like"><i
-                                                className="material-icons">thumb_up_alt</i><span>25</span></div>
-                                            <div className="p-act comment"><i
-                                                className="material-icons">comment</i><span>1</span></div>
-                                            <div className="p-act share"><i className="material-icons">reply</i></div>
-                                        </div>
-                                    </div>
+                                    {this.state.activeBar}
                                 </div>
                             </div>
                         </div>
                         <div className="td" id="r-col">
                             <div id="chat-bar">
-                                <div id="chat-lb"><i className="material-icons" onClick={this.test1}>contacts</i><span>Last Patient</span></div>
+                                <div id="chat-lb"><i className="material-icons" onClick={this.test1}>contacts</i><span>Last Patients</span></div>
                                   <ListFriendsProfile friends={temp} onclick={this.showqmsg}/>
                             </div>
                         </div>

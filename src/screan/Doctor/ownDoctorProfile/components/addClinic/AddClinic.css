@@ -1,0 +1,21 @@
+.container-add-clinic{
+    position: relative;
+
+}
+
+.btn-add-clinic{
+
+    cursor: pointer;
+    margin: 10px;
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #066eff;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+
+}

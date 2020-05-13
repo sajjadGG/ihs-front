@@ -1,0 +1,33 @@
+.date-time{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around!important;
+}
+.date-time div i{
+    margin: 0 5px;
+}
+.my-patient-card{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: .3s ease-in;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+.big-anim:hover{
+    box-shadow: 0 5px 10px grey;
+}
+
+.bottom-card-myPatient{
+    margin: 10px;
+    padding: 5px;
+}
+
+.info-reserved-patient{
+    margin: 10px;
+}
