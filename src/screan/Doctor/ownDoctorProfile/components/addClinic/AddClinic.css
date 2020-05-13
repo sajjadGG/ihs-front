@@ -17,5 +17,18 @@
     font-size: 36px;
     font-weight: bold;
     text-align: center;
+}
+.clinic-name-input{
+    border-width: 0;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 90%;
+    margin: 10px auto;
+}
+.clinic-name-input.hide {
+}
+
+.clinic-name-input::placeholder{
+    color: #3b3b3b;
 
 }

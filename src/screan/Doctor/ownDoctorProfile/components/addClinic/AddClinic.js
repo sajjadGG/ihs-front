@@ -2,12 +2,14 @@ import React from "react";
 import './AddClinic.css';
 
 const AddClinic=(props)=>{
-  const {clinics}=props;
+  const {clinics,addClick}=props;
 
   return(
       <div className='container-add-clinic'>
+            {/*clinic cards*/}
 
-          <div className='btn-add-clinic'>+</div>
+            <input placeholder='name of clinic' className='clinic-name-input'/>
+          <div className='btn-add-clinic' onClick={addClick}>+</div>
       </div>
   );
 };
