@@ -1,7 +1,6 @@
 import React,{Component, useState} from "react";
 import {signUp,login} from '../../api/apiFunction';
 import {setLoginData} from '../../functions/saveDataLocalStorage/localStorageFunction';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import TextField from '@material-ui/core/TextField';
 import {
     createStyles,
