@@ -1,6 +1,7 @@
 import React,{Component, useState} from "react";
 import {signUp,login} from '../../api/apiFunction';
 import {setLoginData} from '../../functions/saveDataLocalStorage/localStorageFunction';
+import {withRouter} from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import {
     createStyles,
@@ -114,4 +115,4 @@ toggleUserName=(userName)=>{
 }
 }
 
-export default PatientL;
+export default withRouter(PatientL);
