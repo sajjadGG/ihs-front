@@ -15,9 +15,22 @@ class DoctorL extends Component{
         createAccount:false,
         userNameDoctor:"",
         passwordDoctor:"",
+        type:"password",
+        classN:"fas fa-eye",
 };
 
-   }
+let EyeState = false;
+}
+eyefun = ()=>{
+ console.log(this.EyeState)
+ if(this.EyeState===true){
+ this.setState({...this.state,classN:"fas fa-eye" , type:"password"})
+ }
+ else{
+ this.setState({...this.state,classN:"fas fa-eye-slash" , type:"input"})
+}
+this.EyeState = !this.EyeState;
+};
 toggleUserNameDoctor=(userName)=>{
     this.setState({...this.state,userNameDoctor:userName.target.value});
  };
@@ -63,7 +76,7 @@ render(){
                     </div>
                     <div className='items-form'>
                         <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordDoctor} onChange={(e)=>this.togglePasswordDoctor(e)}/>
-                        <label htmlFor="name" className="form__label">Password</label>
+                        <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
                     </div>
                     <div className="btn1"><button class="btn btn-primary" onClick={this.toggleLoginBtnDoctor}>ورود</button></div>
 

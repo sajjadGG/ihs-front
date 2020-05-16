@@ -15,12 +15,13 @@ import SearchDoctor from "./screan/Patient/searchDoctor/searchDoctor";
 import DoctorProfileFromPatient from "./screan/Doctor/DoctorProfileView/DoctorProfileFromPatient";
 import SearchFriend from "./screan/Patient/searchFriend/searchFriend";
 import SideBar from "./screan/sideBar/sideBard";
-import land2 from"./screan/landingpage2/land2"
+
 
 // import AppointmentSearch from "./components/AppointmentSearch"
 import {DoctorClinic} from "./doctorPage/doctorclinic"
 import OwnProfile from "./screan/ownPageProfile/ownProfile";
 import Card from "./screan/components/Card/Card";
+// import LandingPage from "./screan/landingPage/landingPage"
 
 
 const store = createStore(combineReducers(Reducer));
@@ -32,8 +33,7 @@ ReactDOM.render(
         <SideBar/>
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
-            <Route exact path='/2' component={land2}/>
-            <Route exact path='/' component={App}/>
+            {/* <Route exact path='/2' component={LandingPage}/> */}
 
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>

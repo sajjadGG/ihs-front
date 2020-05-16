@@ -12,6 +12,19 @@ const registertionData = await axios.post(Helper.registerUrl,{
     last_name:lastName,
     userType:userType,
     });
+
+//     let formdata1 = new FormData();
+//     formdata1.append("username", username);
+//     formdata1.append("password", password);
+//     let requestOptions = {
+//     method: 'POST',
+//     body: formdata1,
+//     redirect: 'follow'
+//     };
+
+//   const registertionData =   await fetch(Helper.registerUrl, requestOptions)
+//     .then(response => response.json())
+//     .catch(error => console.log('error', error));
 return registertionData;
 };
 // export const login = async ({username,password,email,full_name})=>{

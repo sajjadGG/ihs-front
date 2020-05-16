@@ -1,6 +1,7 @@
 import React,{Component, useState} from "react";
 import Carousel  from 'react-bootstrap/Carousel'
 import {Tabs, Tab} from 'react-bootstrap-tabs';
+import {withRouter} from "react-router-dom";
 import med1 from "./med1.jpg"
 import med2 from "./med22.jpg"
 import med3 from "./med3.png"
@@ -56,8 +57,8 @@ render(){
     <Tab  label="Patient">
       {<PatientL/>}
     </Tab>
-<Tab  label="CreateAccount">{<CreateAcc/>}</Tab>
-<Tab  label="Docter">{<DoctorL/>}</Tab>
+<Tab  label="CreateAccount" >{<CreateAcc history={this.props.history}/>}</Tab>
+<Tab  label="Doctor" >{<DoctorL history={this.props.history}/>}</Tab>
 </Tabs>
   </div>
   ;
@@ -144,4 +145,4 @@ return(
 }
 }
 
-export default Land2;
+export default withRouter(Land2);
