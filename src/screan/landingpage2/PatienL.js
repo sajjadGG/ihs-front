@@ -61,10 +61,25 @@ class PatientL extends Component{
         createAccount:false,
         userName:"",
         password:"",
-
+        type:"password",
+        classN:"fas fa-eye"
 
     };
+    let EyeState = false;
    }
+  eyefun = ()=>{
+    console.log(this.EyeState)
+    if(this.EyeState===true){
+    this.setState({...this.state,classN:"fas fa-eye" , type:"password"})
+    }
+    else{
+    this.setState({...this.state,classN:"fas fa-eye-slash" , type:"input"})
+  }
+  this.EyeState = !this.EyeState;
+  };
+
+
+
 toggleUserName=(userName)=>{
     console.log(userName.target.value)
     this.setState({...this.state,userName:userName.target.value});
@@ -91,10 +106,13 @@ toggleUserName=(userName)=>{
   }
 
 
+
+
 };
     
 
     render(){
+    
     return(
 
 
@@ -105,8 +123,8 @@ toggleUserName=(userName)=>{
                         <label htmlFor="name" className="form__label">UserName</label>
                     </div>
                     <div className='items-form'>
-                        <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.password} onChange={(e)=>this.togglePassword(e)}/>
-                        <label htmlFor="name" className="form__label">Password</label>
+                        <input type={this.state.type} className="form__field" placeholder="Name" name="name" id='name' required value={this.state.password} onChange={(e)=>this.togglePassword(e)}/>
+                        <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
                     </div>
                     <div className="btn1"><button className='btn btn-primary' onClick={this.toggleLoginBtn}>ورود</button></div>
 

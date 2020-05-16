@@ -19,10 +19,23 @@ class CreateAcc extends Component{
             usercreate:"",
             emailcreate:"",
             userType:"",
+            type:"password",
+        classN:"fas fa-eye",
 
 
     };
+    let EyeState = false;
    }
+  eyefun = ()=>{
+    console.log(this.EyeState)
+    if(this.EyeState===true){
+    this.setState({...this.state,classN:"fas fa-eye" , type:"password"})
+    }
+    else{
+    this.setState({...this.state,classN:"fas fa-eye-slash" , type:"input"})
+  }
+  this.EyeState = !this.EyeState;
+  };
    togglenameCreate=(name)=>{
     this.setState({...this.state,namecreate:name.target.value})
   };
@@ -118,7 +131,7 @@ class CreateAcc extends Component{
                     </div>
                     <div className='items-form'>
                         <input type="input" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
-                        <label htmlFor="name" className="form__label">Password</label>
+                        <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
                     </div>
                     <div className="CheckUser">
                     <Grid component="label" container alignItems="center" spacing={1}>

@@ -72,7 +72,7 @@
     border-image: linear-gradient(to right, #11998e, #38ef7d);
     border-image-slice: 1;
 }
-.form__field:focus ~ .form__label {
+.items-form:hover .form__label {
     position: absolute;
     top: 0;
     display: block;
@@ -130,4 +130,22 @@
 .fas{
     position: absolute;
     margin-top: 15px;
+}
+.fa-eye{
+    position: absolute;
+    right: 16%;
+    bottom: 15px;
+    cursor: pointer;
+}
+.form__field:focus ~ .fa-eye{
+    color: #29f524;
+}
+.fa-eye-slash{
+    position: absolute;
+    right: 16%;
+    bottom: 15px;
+    cursor: pointer;
+}
+.form__field:focus ~ .fa-eye-slash{
+    color: #29f524;
 }
