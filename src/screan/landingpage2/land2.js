@@ -54,10 +54,10 @@ render(){
   <div className= {this.state.className}>
 <Tabs  onSelect={(index, label) => console.log(label + ' selected')}>
     <Tab  label="Patient">
-      {<PatientL/>}
+      {<PatientL history={this.props.history} />}
     </Tab>
-<Tab  label="CreateAccount">{<CreateAcc/>}</Tab>
-<Tab  label="Docter">{<DoctorL/>}</Tab>
+<Tab  label="CreateAccount" history={this.props.history}>{<CreateAcc/>}</Tab>
+<Tab  label="Docter" history={this.props.history}>{<DoctorL/>}</Tab>
 </Tabs>
   </div>
   ;

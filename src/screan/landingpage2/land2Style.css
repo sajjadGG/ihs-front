@@ -66,7 +66,7 @@ body{
 .btn-1:hover rect {
     stroke-width: 5;
     stroke-dasharray: 80, 310;
-    stroke-dashoffset: 233;
+    stroke-dashoffset: 215;
     -webkit-transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -180,7 +180,7 @@ body{
 .title{margin-top: -65px;}
   }
 
-@keyframes hideModal{
+@keyframes HideModal{
     0%{
         right: 0;
         display: block;
@@ -203,9 +203,9 @@ body{
     width: 30%;
     min-height: 300px;
     z-index: 11;
-    animation: showModal .4s ease-out 1 forwards;
+    animation: ShowModal .4s ease-out 1 forwards;
 }
-@keyframes showModal {
+@keyframes ShowModal {
     0%{
         right: -40%;
         display: none;
@@ -228,7 +228,7 @@ body{
     width: 30%;
     min-height: 300px;
     z-index: 11;
-    animation: hideModal .4s ease-out 1 forwards;
+    animation: HideModal .4s ease-out 1 forwards;
 }
 .none{
     display: none;

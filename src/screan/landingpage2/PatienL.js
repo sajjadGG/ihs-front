@@ -1,7 +1,6 @@
 import React,{Component, useState} from "react";
 import {signUp,login} from '../../api/apiFunction';
 import {setLoginData} from '../../functions/saveDataLocalStorage/localStorageFunction';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import TextField from '@material-ui/core/TextField';
 import {
     createStyles,
@@ -66,6 +65,7 @@ class PatientL extends Component{
     };
    }
 toggleUserName=(userName)=>{
+    console.log(userName.target.value)
     this.setState({...this.state,userName:userName.target.value});
  };
 
@@ -73,27 +73,21 @@ toggleUserName=(userName)=>{
      this.setState({...this.state,password:password.target.value});
  };
 
-toggleLoginBtn= async ()=>{
-    const dataLogin = await login({username:this.state.userName,password:this.state.password});
-   // console.log('dataLogin');
-    console.log(dataLogin);
-    if(dataLogin.token){
-        // this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
-        await setLoginData(dataLogin);
-        if(dataLogin.type==="patient"){
-            this.props.history.push("/profielpatient");
-        }
-        // setTimeout(()=>{
-        //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
-        //
-        // },2500);
-    }
-    else {
-        this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:`خطا`});
-        setTimeout(()=>{
-            this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:""});
-        },2500);
-    }
+ toggleLoginBtn= async ()=>{
+  const dataLogin = await login({username:this.state.userName,password:this.state.password});
+ // console.log('dataLogin');
+  console.log(dataLogin);
+  if(dataLogin.token){
+      // this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:`${dataLogin.user.full_name} سلام `});
+      await setLoginData(dataLogin);
+      if(dataLogin.type==="patient"){
+          this.props.history.push("/profielpatient");
+      }
+      // setTimeout(()=>{
+      //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
+      //
+      // },2500);
+  }
 
 
 };
