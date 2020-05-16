@@ -27,7 +27,7 @@ class OwnProfileDoctor extends Component{
             test:false,
             showClinicInput:false,
             myPatient:<MyPatientsList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45",prescription:"hfsdsdhfsdk"},{name:"reza",date:"1398/01/02",time:"3:10",prescription:"hfsdsdhfsdk"}]}/>,
-            addClinic:<AddClinic addClick={this.addClickClinic}/>,
+           addClinic:<AddClinic addClick={this.addClickClinic} />,
             reserved:<MyReservedList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45" ,clinic:"test"},{name:"reza",date:"1398/01/02",time:"3:10",clinic: "tes22"}]} />,
             activeBar:<MyPatientsList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45" ,clinic:"test"},{name:"reza",date:"1398/01/02",time:"3:10",clinic: "tes22"}]} />
         }
@@ -35,6 +35,7 @@ class OwnProfileDoctor extends Component{
 
     addClickClinic=()=>{
     //    todo:ad function for post clinic
+        this.setState({...this.state,showSide:true})
     };
     test1=()=>{
         this.setState({...this.state,test:!this.state.test});
@@ -201,7 +202,7 @@ class OwnProfileDoctor extends Component{
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>
 
                                             <div className={this.state.active==='addclinic'?"td active":"td"} onClick={()=>this.toggleActive('addclinic',this.state.addClinic)}><i
-                                                className="fa fa-h-square"/><span>َAdd clinic</span></div>
+                                                className="fa fa-h-square"/><span>َADD CLINIC</span></div>
                                         </div>
                                     </div>
 
@@ -209,7 +210,7 @@ class OwnProfileDoctor extends Component{
                             </div>
 
                             <div>
-                                <div className="post">
+                                <div className="post container-active-bar">
                                     {this.state.activeBar}
                                 </div>
                             </div>

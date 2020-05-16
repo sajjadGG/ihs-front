@@ -18,6 +18,13 @@
     font-weight: bold;
     text-align: center;
 }
+.bottom-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
 .clinic-name-input{
     border-width: 0;
     outline: none;
@@ -32,3 +39,15 @@
     color: #3b3b3b;
 
 }
+.map-shower {
+    /*position: absolute;*/
+    width: 300px;
+    /*height: 50px;*/
+    /*left:0;*/
+
+}
+/*.show-map{*/
+/*display: inline-block}*/
+
+/*.hide-map{*/
+/*display: none}*/
