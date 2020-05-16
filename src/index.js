@@ -33,7 +33,6 @@ ReactDOM.render(
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             <Route exact path='/2' component={land2}/>
-            <Route exact path='/' component={App}/>
 
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>
