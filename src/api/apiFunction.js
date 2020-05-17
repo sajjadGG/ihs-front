@@ -211,6 +211,7 @@ export const postClinic = async({name , description,address , city, longitude,la
 
 
 export const getAppointment = async({doctor , speciality,startTime , endTime})=>{
+    console.log("here!!!")
     var myHeaders = new Headers();
     myHeaders.append("Authorization",Helper.authtype + await getToken());
 
@@ -220,11 +221,18 @@ export const getAppointment = async({doctor , speciality,startTime , endTime})=>
     headers: myHeaders,
     redirect: 'follow'
     };
+    console.log(doctor)
+    console.log(speciality)
+    console.log(startTime)
+    console.log(endTime)
 
-    let data = await fetch(Helper.appointment+`?doctor=${doctor}&speciality=${speciality}&startTime=${startTime}&endTime=${endTime}`, requestOptions)
-    .then(response => response.json())
-    .catch(error => console.log('error', error));
-    return data;
+    let data = await fetch(Helper.appointment+`?${doctor ? `doctor=${doctor}&` : ""}${speciality ? `speciality=${speciality}&` : "" }${startTime ? `startTime=${startTime}&` : ""}${endTime?`endTime=${endTime}`:""}`.replace(/&$/, ''), requestOptions)
+        .then(response => response.json())
+        .catch(error => console.log('error', error));
+        return data
+
+    
+    
 }
 
 export const getMyAppointment = async({name })=>{
