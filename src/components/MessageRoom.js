@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import {getMessage , postMessage} from '../api/apiFunction';
+import {Helper} from "../api/urlApi"
 import CustomMessage from './Message'
 
 import "./componentStyle.css"
@@ -10,7 +11,7 @@ import {InputGroup , FormControl , Button , Container ,Row} from 'react-bootstra
 
 
 
-
+const chatSocket = new WebSocket('ws://localhost:8000/ws/chat/sara/john/?token=' + localStorage.getItem('token'))
 
 
 class CustomMessageRoom extends React.Component {
@@ -38,13 +39,20 @@ class CustomMessageRoom extends React.Component {
 
     async componentDidMount(){
         console.log("look here")
-        console.log(this.props.match.params)
-        this.setState({sender : this.props.match.params.sender , receiver : this.props.match.params.receiver})
-        setInterval(async() => {
-            console.log("hiiiiiiiiii")
-            const messageListdummy = await getMessage({sender:this.state.sender , receiver : this.state.receiver})
-            this.setState({messageList : messageListdummy})
-        },1000);
+
+        chatSocket.onopen = () => console.log("connected")
+
+        chatSocket.onmessage = (e) =>{
+            const data = JSON.parse(e.data);
+            console.log("data is")
+            console.log(data)
+            console.log(this.state)
+            this.setState({messageList : [...this.state.messageList , data['message']]})
+        }
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
 
     }
 
@@ -56,10 +64,14 @@ class CustomMessageRoom extends React.Component {
         })
     };
 
-    async onClick(e){
-       await postMessage({sender:this.state.sender , receiver : this.state.receiver, text : this.state.messageText});
+    // async onClick(e){
+    //    await postMessage({sender:this.state.sender , receiver : this.state.receiver, text : this.state.messageText});
+    // }
+    onClick(e){
+        chatSocket.send(JSON.stringify({
+            'message': this.state.messageText
+        }));
     }
-
     
       render(){
     

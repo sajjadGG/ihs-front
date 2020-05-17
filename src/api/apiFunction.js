@@ -114,7 +114,7 @@ export const addFollower = async({followee,token})=>{
 
 export const getMessage = async({sender , receiver})=>{
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + localStorage.getItem('token'));
 
 
     var requestOptions = {
@@ -131,7 +131,7 @@ export const getMessage = async({sender , receiver})=>{
 
 export const postMessage = async({sender , receiver,text})=>{
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + localStorage.getItem('token'));
 
     var formdata = new FormData();
     formdata.append("sender", sender);

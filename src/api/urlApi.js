@@ -20,7 +20,8 @@
 // export default Helper
 
 const LOCAL_URL = 'http://localhost:3000/';
-const BASE_URL = 'https://demo2-ihs.herokuapp.com/api/';
+const BASE_URL = 'http://localhost:8000/api/';
+const WS_URL = 'ws://'+ window.location.host+ '/ws/'
 export const Helper = {
     patientRegister : BASE_URL + 'patients/',
     authorizationUrl : BASE_URL + 'token/',
@@ -43,6 +44,7 @@ export const Helper = {
     appointment : BASE_URL + 'appointment/',
     reviews : BASE_URL + 'reviews/',
 
+    chat : WS_URL + 'chat/',
     localURL: LOCAL_URL,
     authtype : 'Token ',
     following:BASE_URL+'follower/?follower=',
