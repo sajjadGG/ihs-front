@@ -82,12 +82,12 @@ export const putuserData = async({username,first_name , last_name , email})=>{
 //update user data
 export const updateDataUser=async ({fullname,user})=>{
     const token =await getToken();
-    const req =axios.put(Helper.registerUrl+user,{
+    const req =await  axios.put(Helper.registerUrl+user,{
         headers:{
             Authorization:Helper.authtype+token,
         },
     });
-
+    console.log("testreza",req);
 };
 export const addFollower = async({followee,token})=>{
     var myHeaders = new Headers();

@@ -19,10 +19,11 @@ class OwnProfileDoctor extends Component{
             avatar:"",
             active:"people",
             showMessage:false,
+            Expertise:"",
             to:'',
             changeInfo:false,
             di:true,
-            age:19,
+            email:'',
             dec:'',
             test:false,
             showClinicInput:false,
@@ -42,11 +43,13 @@ class OwnProfileDoctor extends Component{
     };
     getData=async ()=>{
         const data =await getUserData();
+        console.log("HIIIII",data)
         if(data){
-            this.setState({...this.state,name:data.full_name,avatar:data.avatar});
+            this.setState({...this.state,name:data.full_name,avatar:data.avatar,email:data.email});
         }
     };
     componentDidMount() {
+
         this.getData();
     }
     toggleActive=(input,show)=>{
@@ -69,12 +72,10 @@ class OwnProfileDoctor extends Component{
     };
     toggleInput(obj){
 
-        console.log("sdfs",obj)
       this.setState(obj);
     };
-    updateData=async ()=>{
+    updateUserData=async ()=>{
         const {username}=await getUserData();
-
         const req= updateDataUser({fullname:"rezx",user:username});
         req.then((data)=>{
         }).catch((e)=>console.error(e));
@@ -95,16 +96,17 @@ class OwnProfileDoctor extends Component{
             </div>
             <div id="i-box">
                 <div className='container-intro'>
-                <label>FullName</label>
+                <label>name</label>
             <input  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,name:e.target.value})} value={this.state.name} />
-
-            <label>Age</label>
-            <input value={this.state.age}  min='18'  max='100' type='number' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,age:e.target.value})}/>
+                </div>
+                <div className='container-intro'>
+                    <label>email</label>
+                    <input value={this.state.email} type='email' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,email:e.target.value})}/>
 
                 </div>
                 <div className='container-intro'>
-                    <label>diseas history</label>
-                    <input  type='text' disabled={true} className='items-intro'  />
+                    <label>Expertise</label>
+                    <input  type='text' disabled={true} className='items-intro'value={this.state.Expertise} />
                 </div>
                 <div className='container-intro'>
                     <label>description</label>
@@ -113,7 +115,7 @@ class OwnProfileDoctor extends Component{
 
                 </div>
                 <div className='container-intro'>
-                    <button className={!this.state.di?"btn-send show-btn":"btn-send hide-btn"} onClick={this.updateData}>Edit</button>
+                    <button className={!this.state.di?"btn-send show-btn":"btn-send hide-btn"} onClick={this.updateUserData}>Edit</button>
                 </div>
     </div>;
 
@@ -132,8 +134,6 @@ class OwnProfileDoctor extends Component{
                                 <div className="td" id="m-td">
                                     <div className="tb">
                                         <div className='row-reverse'>
-                                            <span className="td" onClick={()=>this.changePage('/searchfriend')}><i className="material-icons">person_add</i></span>
-                                            <span className="td" onClick={()=>this.changePage('/date')}><i className="fa fa-stethoscope"/></span>
                                             <span className="td"><i className="material-icons">chat_bubble</i></span>
                                             <span className="td m-active"><i
                                                 className="material-icons" onClick={()=>this.changePage('/card')} >notifications</i></span>
@@ -169,16 +169,7 @@ class OwnProfileDoctor extends Component{
                             <div className="l-cnt">
                                 {showFixed}
                             </div>
-                            <div className="l-cnt l-mrg">
-                                <div className="cnt-label">
-                                    <i className="l-i" id="l-i-p"></i>
-                                    <span>Photos</span>
 
-                                </div>
-                                <div id="photos">
-
-                                </div>
-                            </div>
                             <div className="l-cnt l-mrg">
 
                             </div>
@@ -202,7 +193,7 @@ class OwnProfileDoctor extends Component{
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>
 
                                             <div className={this.state.active==='addclinic'?"td active":"td"} onClick={()=>this.toggleActive('addclinic',this.state.addClinic)}><i
-                                                className="fa fa-h-square"/><span>َADD CLINIC</span></div>
+                                                className="material-icons">local_hospital</i><span >ADD CILINC</span></div>
                                         </div>
                                     </div>
 
