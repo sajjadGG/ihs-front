@@ -62,9 +62,11 @@ class PatientL extends Component{
         userName:"",
         password:"",
         type:"password",
-        classN:"fas fa-eye"
+        classN:"fas fa-eye",
+        aa:false
 
     };
+    let ErrorPass =null
     let EyeState = false;
    }
   eyefun = ()=>{
@@ -88,8 +90,22 @@ toggleUserName=(userName)=>{
  togglePassword=(password)=>{
      this.setState({...this.state,password:password.target.value});
  };
-
+ btnMouseOver = ()=>{
+  if(this.state.password.length <= 3){
+    this.ErrorPass = <div style={{color:"rgb(255, 159, 159)", marginLeft:"10%"}}>Passwords must be at least 4 characters</div>
+    
+  }
+  else{
+    this.ErrorPass = null
+  }
+  this.setState({aa:!this.state.aa})
+ }
  toggleLoginBtn= async ()=>{
+   if(this.state.password.length <= 3){
+     this.ErrorPass = <div style={{color:"rgb(255, 159, 159)", marginLeft:"10%"}}>Passwords must be at least 4 characters</div>
+     this.setState({aa:!this.state.aa})
+   }
+   else{
   const dataLogin = await login({username:this.state.userName,password:this.state.password});
  // console.log('dataLogin');
   console.log(dataLogin);
@@ -99,6 +115,7 @@ toggleUserName=(userName)=>{
       if(dataLogin.type==="patient"){
           this.props.history.push("/profielpatient");
       }
+    }
       // setTimeout(()=>{
       //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});
       //
@@ -125,8 +142,8 @@ toggleUserName=(userName)=>{
                     <div className='items-form'>
                         <input type={this.state.type} className="form__field" placeholder="Name" name="name" id='name' required value={this.state.password} onChange={(e)=>this.togglePassword(e)}/>
                         <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
-                    </div>
-                    <div className="btn1"><button className='btn btn-primary' onClick={this.toggleLoginBtn}>ورود</button></div>
+                    </div>{this.ErrorPass}
+                    <div className="btn1"><button className='btn btn-primary' onMouseOver={this.btnMouseOver} onClick={this.toggleLoginBtn}>ورود</button></div>
 
         </div>
     );

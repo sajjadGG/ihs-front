@@ -53,7 +53,7 @@ class OwnProfile extends Component{
         this.setState({...this.state,active:input})
 
         if(input==="history"){
-            this.History = <div className="history">{<Cldr day= {{may8:'at 10:20pm with Dr Karimi' , may10:'at 9:35pm with Dr Rezayi'}}/>} </div>
+            this.History = <div className="history">{<Cldr day= {{may08:'at 10:20pm with Dr Karimi' , may10:'at 9:35pm with Dr Rezayi'}}/>} </div>
         }
         else{
             this.History = null

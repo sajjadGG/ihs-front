@@ -21,9 +21,11 @@ class CreateAcc extends Component{
             userType:"patinet",
             type:"password",
         classN:"fas fa-eye",
+        aa:false
 
 
     };
+    let ErrorPass =null
     let EyeState = false;
    }
   eyefun = ()=>{
@@ -55,8 +57,22 @@ class CreateAcc extends Component{
     //console.log(ut.target.checked)
     this.setState({...this.setState,userType:ut.target.checked?'doctor':'patient'})
   };
-
+  btnMouseOver = ()=>{
+    if(this.state.passwordcreate.length <= 3){
+      this.ErrorPass = <div style={{color:"rgb(255, 159, 159)", marginLeft:"10%"}}>Passwords must be at least 4 characters</div>
+      
+    }
+    else{
+      this.ErrorPass = null
+    }
+    this.setState({aa:!this.state.aa})
+   }
   toggleLoginBtnCreate= async ()=>{
+    if(this.state.passwordcreate.length <= 3){
+        this.ErrorPass = <div style={{color:"rgb(255, 159, 159)", marginLeft:"10%"}}>Passwords must be at least 4 characters</div>
+        
+      }
+      else{
     const dataCreate = await signUp({firstName:this.state.namecreate,lastName:this.state.lastnamecreate,username:this.state.usercreate,password:this.state.passwordcreate,email:this.state.emailcreate , userType : this.state.userType});
    // console.log('dataLogin');
    const dataLogin = await login({username:this.state.usercreate,password:this.state.passwordcreate});
@@ -80,7 +96,7 @@ class CreateAcc extends Component{
         setTimeout(()=>{
             this.setState({...this.state,showAlertWrong:!this.state.showAlertWrong,showAlertWrongText:""});
         },2500);
-    }
+    }}
 
 
 };
@@ -130,9 +146,9 @@ class CreateAcc extends Component{
                         <label htmlFor="name" className="form__label">UserName</label>
                     </div>
                     <div className='items-form'>
-                        <input type="input" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
+                        <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
                         <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
-                    </div>
+                    </div>{this.ErrorPass}
                     <div className="CheckUser">
                     <Grid component="label" container alignItems="center" spacing={1}>
                         <Grid item>بیمار</Grid>
@@ -142,7 +158,7 @@ class CreateAcc extends Component{
                         <Grid item>دکتر</Grid>
                         </Grid>
                     </div>
-                    <div className="btn1"><button className="btn" onClick={this.toggleLoginBtnCreate}>ساخت حساب</button></div></div>
+                    <div className="btn1"><button className="btn" onClick={this.toggleLoginBtnCreate} onMouseOver={this.btnMouseOver}>ساخت حساب</button></div></div>
     );
 }
 }
