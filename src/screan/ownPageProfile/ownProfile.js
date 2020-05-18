@@ -189,6 +189,8 @@ class OwnProfile extends Component{
                                                 className="material-icons">explore</i><span>ABOUT</span></div>
                                             <div className={this.state.active==='archive'?"td active":"td"} onClick={()=>this.toggleActive('archive')}><i
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>
+                                                <div className={this.state.active==='history'?"td active":"td"} onClick={()=>this.toggleActive('history')}><i
+                                                 class="far fa-calendar-check material-icons"></i><span>HISTORY</span></div>
                                         </div>
                                     </div>
 

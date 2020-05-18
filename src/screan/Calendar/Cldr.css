@@ -1,0 +1,77 @@
+.mm{
+  background-color: white;
+  height: 350px;
+  max-width: 350px;
+  border-radius: 30px 30px 0 0;
+  justify-content: center;
+}
+.month{
+  display: flex;
+  justify-content: center;
+  font-weight: 780;
+  margin-bottom: 10px;
+}
+li{
+  list-style-type: none;
+}
+.days{
+  margin-top: -17px;
+}
+.week{
+  justify-content: center;
+  border-bottom: 1px solid  rgb(201, 0, 0);
+  display: inline-flex;
+  width: 50px;
+  margin-bottom: 0px;
+  color: rgb(201, 0, 0);
+}
+.day{
+  padding-top: 12px;
+  justify-content: center;
+  position: relative;
+  height: 50px;
+  display: inline-flex;
+  font-weight: 600;
+  width: 50px;
+}
+.d-active{
+  border-radius: 100%;
+  border: 3px solid orchid;
+  background-color: orchid;
+  color: white;
+  transition: border-color ,box-shadow 1s ;
+
+}
+.d-active:hover{
+  box-shadow: 0px 0px 0px 3px #6fa9ff;
+  cursor: pointer;
+
+  
+}
+.ShowM{
+  display: block;
+  position: absolute;
+  bottom: 40px;
+  width: 200px;
+  min-height: 70px;
+  left:40px;
+  opacity: .9;
+  background-color: cyan;
+  border-radius: 30px 30px 30px 0px;
+  animation: ShowAn 2s forwards;
+
+}
+.HideM{
+  display: none;
+}
+@keyframes ShowAn{
+  0%{
+    display: block;
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
