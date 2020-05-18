@@ -4,8 +4,8 @@ import {Tabs, Tab} from 'react-bootstrap-tabs';
 import {withRouter} from "react-router-dom";
 import med1 from "./med1.jpg"
 import med2 from "./med22.jpg"
-import med3 from "./med3.png"
-import med4 from "./med4.png"
+import med3 from "./med31.jpg"
+import med4 from "./med4.jpg"
 import title from "./title.png"
 import {signUp,login} from '../../api/apiFunction';
 import {setLoginData} from '../../functions/saveDataLocalStorage/localStorageFunction';
@@ -16,7 +16,7 @@ import DoctorL from "./DoctorL"
 
 import './loginM.css'
 import './land2Style.css'
-import SideBar from "../sideBar/sideBard";
+import SideB from "./sideB";
 
 class Land2 extends Component{
 
@@ -55,7 +55,7 @@ render(){
   <div className= {this.state.className}>
 <Tabs  onSelect={(index, label) => console.log(label + ' selected')}>
     <Tab  label="Patient">
-      {<PatientL/>}
+      {<PatientL history={this.props.history}/>}
     </Tab>
 <Tab  label="CreateAccount" >{<CreateAcc history={this.props.history}/>}</Tab>
 <Tab  label="Doctor" >{<DoctorL history={this.props.history}/>}</Tab>
@@ -69,6 +69,7 @@ render(){
 
 
 return(
+  
     <div className = "container-fluid main">
         <div className= "col-md-12 Headder"><h1 style={{float:"left" , margin:"10px 0 0 2%"}}>koko</h1>
           <div className="login" >
