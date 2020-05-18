@@ -97,11 +97,7 @@ export const putuserData = async({username,first_name , last_name , email})=>{
 //update user data
 export const updateDataUser=async ({firstname , lastname,user})=>{
     const token =await getToken();
-<<<<<<< HEAD
     const req =axios.put(Helper.registerUrl+user+"/",{
-=======
-    const req =await  axios.put(Helper.registerUrl+user,{
->>>>>>> c08c739c76f51ba314c42da8fc40b09910744e9a
         headers:{
             Authorization:Helper.authtype+token,
         },
