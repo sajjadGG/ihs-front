@@ -9,6 +9,9 @@ export const setLoginData= async (input)=>{
 export const getUserData =async ()=>{
     return await JSON.parse(localStorage.getItem('userData')).user;
 };
+export const getAppData =()=>{
+    return JSON.parse(localStorage.getItem('userData')).alter_appointment;
+};
 
 export const getToken=async ()=>{
     return JSON.parse(localStorage.getItem('userData')).token;

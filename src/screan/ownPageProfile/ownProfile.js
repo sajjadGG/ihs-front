@@ -3,7 +3,7 @@ import React,{Component} from "react";
 import './ownProfileStyle.css'
 import SideBar from "../sideBar/sideBard";
 import AvatarImage from "../../functions/returnElement/returnAvatarPic";
-import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
+import {getUserData, getAppData} from "../../functions/saveDataLocalStorage/localStorageFunction";
 import {getMyAppointment} from "../../api/apiFunction";
 import {withRouter} from "react-router-dom";
 import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
@@ -41,9 +41,10 @@ class OwnProfile extends Component{
             this.setState({...this.state,name:data.full_name,avatar:data.avatar,username:data.username});
         }
     };
-    getApp= async ()=>{
-        const data1 = await getMyAppointment(this.state.username);
-        console.log(data1 + "dsdvdvddvdv")
+    getApp=()=>{
+        const data1 = getAppData();
+        console.log(data1)
+        return data1
     }
     componentDidMount() {
         this.getData();
@@ -53,7 +54,7 @@ class OwnProfile extends Component{
         this.setState({...this.state,active:input})
 
         if(input==="history"){
-            this.History = <div className="history">{<Cldr day= {{may08:'at 10:20pm with Dr Karimi' , may10:'at 9:35pm with Dr Rezayi'}}/>} </div>
+            this.History = <div className="history">{<Cldr day= {this.getApp()}/>} </div>
         }
         else{
             this.History = null
