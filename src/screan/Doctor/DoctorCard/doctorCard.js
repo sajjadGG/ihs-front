@@ -4,7 +4,7 @@ import './searchDoctorStyle.css'
 import {addFollower} from '../../../api/apiFunction'
 import AvatarImage from "../../../functions/returnElement/returnAvatarPic";
 import {getToken} from "../../../functions/saveDataLocalStorage/localStorageFunction";
-
+// hhhh
 const CardDoctor = (props)=>{
     // console.log('rr',props)
     const {user,name,id,medicalCouncilId,avatar,speciality}= props;

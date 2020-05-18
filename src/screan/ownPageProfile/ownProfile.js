@@ -5,6 +5,11 @@ import SideBar from "../sideBar/sideBard";
 import AvatarImage from "../../functions/returnElement/returnAvatarPic";
 import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
 import {withRouter} from "react-router-dom";
+import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
+import QuicMessage from "../components/quickMessage/quickMessage";
+import {updateDataUser} from "../../api/apiFunction";
+import SideUp from "../components/sideUp/sideUp";
+
 class OwnProfile extends Component{
     constructor(props) {
         super(props);
@@ -12,11 +17,21 @@ class OwnProfile extends Component{
             name:"",
             avatar:"",
             active:"timeline",
+            showMessage:false,
+            to:'',
+            changeInfo:false,
+            di:true,
+            age:19,
+            dec:'',
+            test:false
         }
+    };
+    test1=()=>{
+        console.log(this.state)
+        this.setState({...this.state,test:!this.state.test});
     };
     getData=async ()=>{
         const data =await getUserData();
-        console.log("hiii",data)
         if(data){
             this.setState({...this.state,name:data.full_name,avatar:data.avatar});
         }
@@ -31,8 +46,70 @@ class OwnProfile extends Component{
         this.props.history.push(input)
     };
 
+    showqmsg=(input,checkstae)=>{
+    this.setState({...this.state,to : input ,showMessage:checkstae});
+    };
+    closef=()=>{
+        this.setState({...this.state,showMessage:false});
+    };
+
+    changeInfo=()=>{
+        this.setState({...this.state,di:!this.state.di});
+
+    };
+    toggleInput(obj){
+
+        console.log("sdfs",obj)
+      this.setState(obj);
+    };
+    updateData=async ()=>{
+        const {username}=await getUserData();
+
+        const req= updateDataUser({fullname:"rezx",user:username});
+        req.then((data)=>{
+        }).catch((e)=>console.error(e));
+
+    };
     render() {
+        const temp=[
+            {name:"reza"},
+            {name:"sajjad"},
+        ];
+        const showFixed=
+            <div>
+            <div className="cnt-label">
+                <i className="l-i" id="l-i-i"></i>
+                <span>Intro</span>
+                <div className="lb-action"><i className="material-icons" onClick={this.changeInfo}>edit</i></div>
+            </div>
+            <div id="i-box">
+                <div className='container-intro'>
+                <label>FullName</label>
+            <input  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,name:e.target.value})} value={this.state.name} />
+
+            <label>Age</label>
+            <input value={this.state.age}  min='18'  max='100' type='number' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,age:e.target.value})}/>
+
+                </div>
+                <div className='container-intro'>
+                    <label>diseas history</label>
+                    <input  type='text' disabled={true} className='items-intro'  />
+                </div>
+                <div className='container-intro'>
+                    <label>description</label>
+                    <textarea  type='text' disabled={this.state.di} className='items-intro' onChange={(e)=>this.toggleInput({...this.state,dec:e.target.value})} value={this.state.dec} />
+                </div>
+
+                </div>
+                <div className='container-intro'>
+                    <button className={!this.state.di?"btn-send show-btn":"btn-send hide-btn"} onClick={this.updateData}>send</button>
+                </div>
+    </div>;
+
+
         return(
+            <div className='container'>
+
             <main>
                 <SideBar/>
 
@@ -45,6 +122,7 @@ class OwnProfile extends Component{
                                     <div className="tb">
                                         <div className='row-reverse'>
                                             <span className="td" onClick={()=>this.changePage('/searchfriend')}><i className="material-icons">person_add</i></span>
+                                            <span className="td" onClick={()=>this.changePage('/date')}><i className="fa fa-stethoscope"/></span>
                                             <span className="td"><i className="material-icons">chat_bubble</i></span>
                                             <span className="td m-active"><i
                                                 className="material-icons" onClick={()=>this.changePage('/card')} >notifications</i></span>
@@ -77,19 +155,7 @@ class OwnProfile extends Component{
                     <div className="tb">
                         <div className="td" id="l-col">
                             <div className="l-cnt">
-                                <div className="cnt-label">
-                                    <i className="l-i" id="l-i-i"></i>
-                                    <span>Intro</span>
-                                    <div className="lb-action"><i className="material-icons">edit</i></div>
-                                </div>
-                                <div id="i-box">
-                                    <div id="intro-line">Web developer - UI</div>
-                                    <div id="u-occ">Developing awesome UIs at <a href="#">Google LLC</a> Bengaluru and
-                                        inspiring other companies to do so :)
-                                    </div>
-                                    <div id="u-loc"><i className="material-icons">location_on</i><a
-                                        href="#">Bengaluru</a>, <a href="#">India</a></div>
-                                </div>
+                                {showFixed}
                             </div>
                             <div className="l-cnt l-mrg">
                                 <div className="cnt-label">
@@ -98,44 +164,11 @@ class OwnProfile extends Component{
 
                                 </div>
                                 <div id="photos">
-                                    <div className="tb">
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                        <div className="tr">
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                            <div className="td"></div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div className="l-cnt l-mrg">
-                                <div className="cnt-label">
-                                    <i className="l-i" id="l-i-k"></i>
-                                    <span>Did You Know<i id="k-nm">1</i></span>
-                                </div>
-                                <div>
-                                    <div className="q-ad-c">
-                                        <a href="#" className="q-ad">
-                                            <img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png"/>
-                                                <span>My favorite superhero is...</span>
-                                        </a>
-                                    </div>
-                                    <div className="q-ad-c">
-                                        <a href="#" className="q-ad" id="add_q">
-                                            <i className="material-icons">add</i>
-                                            <span>Add Answer</span>
-                                        </a>
-                                    </div>
-                                </div>
+
                             </div>
                             <div id="t-box">
 
@@ -222,40 +255,20 @@ class OwnProfile extends Component{
                         </div>
                         <div className="td" id="r-col">
                             <div id="chat-bar">
-                                <div id="chat-lb"><i className="material-icons">contacts</i><span>Friends</span></div>
-                                <div id="cts">
-                                    <div className="on-ct active">
-                                        <a href="#"><img src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                    <div className="on-ct active">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img924/4231/JnFicn.jpg"/></a>
-                                    </div>
-                                    <div className="on-ct">
-                                        <a href="#"><img
-                                            src="https://imagizer.imageshack.com/img923/332/1abR4H.png"/></a>
-                                    </div>
-                                </div>
+                                <div id="chat-lb"><i className="material-icons" onClick={this.test1}>contacts</i><span>Friends</span></div>
+                                  <ListFriendsProfile friends={temp} onclick={this.showqmsg}/>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div >
+                    <QuicMessage show={this.state.showMessage} to={this.state.to} onClick={this.closef}/>
+
+                </div>
+
             </main>
+            </div>
+
         );
 
     }

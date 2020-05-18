@@ -91,7 +91,17 @@ export const putuserData = async({username,first_name , last_name , email})=>{
     .then(response => response.json())
     .catch(error => console.log('error', error));
     return data
-}
+};
+//update user data
+export const updateDataUser=async ({fullname,user})=>{
+    const token =await getToken();
+    const req =await  axios.put(Helper.registerUrl+user,{
+        headers:{
+            Authorization:Helper.authtype+token,
+        },
+    });
+    console.log("testreza",req);
+};
 export const addFollower = async({followee,token})=>{
     var myHeaders = new Headers();
     myHeaders.append("Authorization",Helper.authtype + token);

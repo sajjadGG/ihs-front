@@ -1,0 +1,53 @@
+.container-add-clinic{
+    position: relative;
+
+}
+
+.btn-add-clinic{
+
+    cursor: pointer;
+    margin: 10px;
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #066eff;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+.bottom-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.clinic-name-input{
+    border-width: 0;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 90%;
+    margin: 10px auto;
+}
+.clinic-name-input.hide {
+}
+
+.clinic-name-input::placeholder{
+    color: #3b3b3b;
+
+}
+.map-shower {
+    /*position: absolute;*/
+    width: 300px;
+    /*height: 50px;*/
+    /*left:0;*/
+
+}
+/*.show-map{*/
+/*display: inline-block}*/
+
+/*.hide-map{*/
+/*display: none}*/

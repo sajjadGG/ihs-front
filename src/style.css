@@ -62,3 +62,12 @@ html {
     display: flex;
     flex-direction: row-reverse;
 }
+
+main{
+    position: relative;
+}
+
+
+body{
+    position: relative;
+}
