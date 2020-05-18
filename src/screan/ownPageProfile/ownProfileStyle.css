@@ -56,8 +56,6 @@ button
 
 main
 {
-    width: 1280px;
-    margin: 0 65px;
     background-color: #e9ebee;
     box-shadow: 0px 8px 30px #1d2d4f;
     border-radius: 4px;
@@ -1000,6 +998,12 @@ header
     font-size: 16px;
     text-align: center;
     margin: 23px 0px;
+    cursor: pointer;
+    transition: .4s ease-in;
+    position: relative;
+}#chat-lb:hover
+{
+transform: scale(.8);
 }
 
 #chat-lb i
@@ -1100,4 +1104,67 @@ span.td i:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#cts .on-ct .nothing-show i{
+    color: grey;
+    font-size: 1.5em
+;
+}
+
+i.material-icons:hover{
+    color: black;
+}
+.items-intro{
+    background: none;
+    border-width: 0;
+    border-bottom: 1px solid black;
+    margin: 10px;
+}
+.btn-send{
+    padding: 10px 30px;
+    background-color: #3b5ca0;
+    color: white;
+    border-radius: 5px;
+    transition: .4s ease-in;
+
+}
+.btn-send:hover{
+transform: scale(.8);
+    background-color: #2ecd18;
+
+}
+.show-btn{
+    animation: showBtnSend .4s ease-in forwards;
+}
+@keyframes showBtnSend {
+0%{
+    display: block;
+    opacity: 0;
+}
+    100%{
+        opacity: 1;
+    }
+
+}
+.hide-btn{
+    animation: hideBtnSend .4s ease-in forwards;
+
+}
+
+@keyframes hideBtnSend {
+    0%{
+opacity: 1;
+    }
+    80%{
+        opacity: 0;
+
+    }
+    100%{
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+
+    }
+
 }

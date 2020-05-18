@@ -74,12 +74,14 @@ export const getuserData = async({username})=>{
 }
 
 export const putuserData = async({username,first_name , last_name , email})=>{
+    console.log("here" + username)
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + localStorage.getItem('token'));
     var formdata = new FormData();
     formdata.append("first_name", first_name);
     formdata.append("last_name", last_name);
-    formdata.append("email", email);
+    if(email !=undefined)
+        formdata.append("email", email);
     var requestOptions = {
     method: 'PUT',
     headers: myHeaders,
@@ -91,7 +93,17 @@ export const putuserData = async({username,first_name , last_name , email})=>{
     .then(response => response.json())
     .catch(error => console.log('error', error));
     return data
-}
+};
+//update user data
+export const updateDataUser=async ({firstname , lastname,user})=>{
+    const token =await getToken();
+    const req =axios.put(Helper.registerUrl+user+"/",{
+        headers:{
+            Authorization:Helper.authtype+token,
+        },
+    });
+
+};
 export const addFollower = async({followee,token})=>{
     var myHeaders = new Headers();
     myHeaders.append("Authorization",Helper.authtype + token);

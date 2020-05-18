@@ -1,0 +1,39 @@
+.avatar-card{
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*border-image:linear-gradient(aqua,mediumpurple,rebeccapurple) 30 round;*/
+    border: 1px mediumpurple solid;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.avatar-card img{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.avatar-text{
+    /*background-image: linear-gradient(aqua,mediumpurple,rebeccapurple);*/
+    /*background-color: mediumseagreen;*/
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(45deg,aqua,purple);
+    transition: .2s ease-in;
+
+}
+
+.avatar-text:hover{
+    background-image: linear-gradient(70deg,aqua,purple);
+    transition: 1s ease-in-out;
+
+}
