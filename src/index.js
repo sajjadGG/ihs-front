@@ -30,7 +30,7 @@ import SearchedUserView from "./screan/searchedUserView/searchedUserView";
 // import LandingPage from "./screan/landingPage/landingPage"
 
 
-import SearchedUserView from "./screan/searchedUserView/searchedUserView";
+
 
 
 const store = createStore(combineReducers(Reducer));
@@ -39,12 +39,10 @@ ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
 
-        <SideBar/>
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             {/* <Route exact path='/2' component={LandingPage}/> */}
 
-            <Route exact path='/' component={App}/>
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>
             <Route exact path='/card' component={Card}/>
