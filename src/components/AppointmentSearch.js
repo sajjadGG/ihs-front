@@ -44,8 +44,9 @@ class AppointmentSearch extends React.Component{
         }
     }
     //searchForDaReserve
-    searchForDaReserve=()=>{
-        alert("hi")
+    searchForDaReserve=async ()=>{
+        const data=await getAppointment({doctor:this.state.doctor});
+        this.setState({records : data})
     };
     //toggleState
     toggleState=(input)=>{
@@ -68,6 +69,7 @@ class AppointmentSearch extends React.Component{
 
     }
     searchApoinment=async ()=> {
+
         const data=await getAppointment({doctor:this.state.doctor,speciality:this.state.user,startTime:this.state.start_time.toISOString(),endTime:this.state.end_time.toISOString()});
         this.setState({records : data})
     };
@@ -102,22 +104,15 @@ const calender =
                 <TextField label="تخصص" onChange={()=>null}/>
 
                 <TextField label="نام دکتر" onChange={(e)=>this.toggleState({...this.state,doctorName: e.target.value})} value={this.state.doctorName}/>
-                <Button>search</Button>
+                <Button onClick={this.searchApoinment}>search</Button>
             </div>
 
-            <div className='hide-btn' onClick={this.searchApoinment}><Button>Search</Button>
+            <div className='hide-btn' ><Button onClick={this.searchApoinment}>Search</Button>
             </div>
         </Toolbar>
     </Row>
 
-    <Container>
-        {listItems}
-        <div>
-
-        </div>
-
-
-    </Container>
+    
 </Container>
 
         return(
@@ -136,6 +131,9 @@ const calender =
                 <SideUp show={this.state.showMessage} to={'rez'} onClick={this.closef} child={calender}/>
 
                 </div>
+                <Container>
+                    {listItems}
+                </Container>
             </Container>
         )
     }

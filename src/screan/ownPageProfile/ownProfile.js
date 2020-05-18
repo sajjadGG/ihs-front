@@ -240,49 +240,19 @@ class OwnProfile extends Component{
                                 </div>
                             </div>
                             <div>
-                                <div className="post">
-                                    <div className="tb">
-                                        <a href="#" className="td p-p-pic"><img
-                                            src="https://imagizer.imageshack.com/img923/2452/zifFKH.jpg"
-                                            alt="Rajeev's profile pic"/></a>
-                                        <div className="td p-r-hdr">
-                                            <div className="p-u-info">
-                                                <a href="#">Rajeev Singh</a> shared a memory with <a href="#">Himalaya
-                                                Singh</a>
-                                            </div>
-                                            <div className="p-dt">
-                                                <i className="material-icons">calendar_today</i>
-                                                <span>January 28, 2015</span>
-                                            </div>
-                                        </div>
-                                        <div className="td p-opt"><i className="material-icons">keyboard_arrow_down</i>
-                                        </div>
-                                    </div>
-                                    <a href="#" className="p-cnt-v">
-                                        <img src="https://imagizer.imageshack.com/img923/8568/6LwtUa.jpg"/>
-                                    </a>
-                                    <div>
-                                        <div className="p-acts">
-                                            <div className="p-act like"><i
-                                                className="material-icons">thumb_up_alt</i><span>25</span></div>
-                                            <div className="p-act comment"><i
-                                                className="material-icons">comment</i><span>1</span></div>
-                                            <div className="p-act share"><i className="material-icons">reply</i></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div className="td" id="r-col">
                             <div id="chat-bar">
                                 <div id="chat-lb"><i className="material-icons" onClick={this.test1}>contacts</i><span>Friends</span></div>
-                                  <ListFriendsProfile friends={temp} onclick={this.showqmsg}/>
+                                  <ListFriendsProfile friends={JSON.parse(localStorage.getItem('userData')).follower} onclick={this.showqmsg}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div >
-                    <QuicMessage show={this.state.showMessage} to={this.state.to} onClick={this.closef}/>
+                    <QuicMessage show={this.state.showMessage} to={this.state.to} onClick={this.closef} sender = {this.state.username} />
 
                 </div>
 

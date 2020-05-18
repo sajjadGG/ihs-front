@@ -9,7 +9,7 @@ body{
 }
 @font-face {
     font-family: bn;
-    src: url(./assets/B-NAZANIN.ttf);
+    src: url(./assets/B-NAZANIN.TTF);
 
 }
 
@@ -64,10 +64,5 @@ html {
 }
 
 main{
-    position: relative;
-}
-
-
-body{
     position: relative;
 }

@@ -20,9 +20,9 @@ class ListFriendsProfile extends Component{
         const list =[];
         input.forEach((itm)=>{
         list.push(
-            <div className="on-ct" onClick={()=>this.showQuickMsg(itm.name)} >
-            <span onClick={()=>this.showQuickMsg(itm.name)}>
-                <AvatarImage100 name={itm.name} h='50px'/></span>
+            <div className="on-ct" onClick={()=>this.showQuickMsg(itm.follower)} >
+            <span onClick={()=>this.showQuickMsg(itm.follower)}>
+                <AvatarImage100 name={itm.follower} h='50px'/></span>
         </div>)
         });
         this.setState({...this.state,friends:list});
