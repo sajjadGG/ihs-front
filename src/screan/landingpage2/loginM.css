@@ -1,0 +1,151 @@
+
+.items-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   position: relative;
+   padding: 10px 0;
+}
+/*.items-form label{*/
+/*    color: black;*/
+/*    font-size: 1.5em;*/
+/*}*/
+/*.items-form input{*/
+/*    outline: none;*/
+/*    margin: 30px 0;*/
+/*    min-width: 300px;*/
+/*    border-bottom: 1px solid;*/
+
+
+/*}*/
+
+
+/*test*/
+/*todo:check it after sprint*/
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 70%;
+    border: 0;
+    /*border-bottom: 2px solid #9b9b9b;*/
+    border-bottom: 1px solid rgb(255, 255, 255);
+    outline: 0;
+    font-size: 1rem;
+    /*color: #fff;*/
+    color: rgb(255, 255, 255);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.form__field::placeholder {
+    color: transparent;
+}
+.form__field:placeholder-shown + .form__label {
+    font-size: 1rem;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    left: 17%;
+    display: block;
+    transition: 0.2s;
+    font-size: .8rem;
+    /*color: #9b9b9b;*/
+    color: rgb(255, 255, 255);
+}
+
+.form__field:focus {
+    border-bottom: 2px solid;
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+}
+.items-form:hover .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: .8rem;
+    color: #11998e;
+    font-weight: 700;
+}
+.login-btn{
+    margin: 15px;
+    padding: 10px 20px;
+    background-image: linear-gradient(to right, #29f524, #71f573, #29f524);
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    z-index: 3;
+}
+.login-btn:hover{
+    animation: 1s btn-scale forwards;
+    outline: none;
+}
+@keyframes btn-scale {
+    0%{}
+    50%{
+        transform: scaleX(2);
+    }
+    100%{
+        transform: scaleX(1);
+        border-radius: 10px;
+    }
+
+}
+.CheckUser{
+    margin-left: 20%;
+}
+
+.btn{
+    background-color:rgb(72, 112, 187) ;
+}
+.btn:hover{
+
+    background-color:rgb(103, 125, 165) ;
+}
+.btn1{
+    margin-left: 10%;
+}
+.formm{
+
+    margin-left: 0%;
+    display: block;
+   position: relative;
+   padding: 10px 0;
+}
+.fas{
+    position: absolute;
+    margin-top: 15px;
+}
+.fa-eye{
+    position: absolute;
+    right: 16%;
+    bottom: 15px;
+    cursor: pointer;
+}
+.form__field:focus ~ .fa-eye{
+    color: #29f524;
+}
+.fa-eye-slash{
+    position: absolute;
+    right: 16%;
+    bottom: 15px;
+    cursor: pointer;
+}
+.form__field:focus ~ .fa-eye-slash{
+    color: #29f524;
+}
