@@ -13,6 +13,7 @@ import { DatePicker } from "jalali-react-datepicker";
 import {getAppointment} from "../api/apiFunction";
 import SideUp from "../screan/components/sideUp/sideUp";
 import SideBar from "../screan/sideBar/sideBard";
+import Card from "../screan/components/Card/Card"
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -78,18 +79,25 @@ class AppointmentSearch extends React.Component{
         this.setState({...this.state,showMessage:false});
     };
     render(){
+        // const listItems = this.state.records.map((element) =>
+        // <Container>
+        //     <Row>
+        //     <FormLabel>{element.id}</FormLabel>
+        //     <FormLabel>{element.doctorUsername}</FormLabel>
+        //     <FormLabel>{element.doctorSpeciality}</FormLabel>
+        //     <FormLabel>{element.start_time}</FormLabel>
+        //     <Button>رزرو</Button>
+        //     </Row>
+        //     <Divider />
+        //     </Container>
+        //           );
+
+
         const listItems = this.state.records.map((element) =>
-        <Container>
-            <Row>
-            <FormLabel>{element.id}</FormLabel>
-            <FormLabel>{element.doctorUsername}</FormLabel>
-            <FormLabel>{element.doctorSpeciality}</FormLabel>
-            <FormLabel>{element.start_time}</FormLabel>
-            <Button>رزرو</Button>
-            </Row>
-            <Divider />
-            </Container>
-                  );
+        <Card name = {element.doctorUsername} des={`${element.clinic.address}\n$` } buttonText="reserve"/>
+);
+
+
 const calender =
     <Container>
     <Row position="static">

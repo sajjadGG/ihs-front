@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import './ownProfileStyle.css'
-import {getUserData} from "../../../../functions/saveDataLocalStorage/localStorageFunction";
+import {getUserData , getAppData} from "../../../../functions/saveDataLocalStorage/localStorageFunction";
 import {updateDataUser} from "../../../../api/apiFunction";
 import SideBar from "../../../sideBar/sideBard";
 import AvatarImage from "../../../../functions/returnElement/returnAvatarPic";
@@ -9,6 +9,7 @@ import QuicMessage from "../../../components/quickMessage/quickMessage";
 import MyPatientsList from "../components/MyPatients/MyPatientsList";
 import MyReservedList from "../components/Reserved/MyReservedList";
 import AddClinic from "../components/addClinic/AddClinic";
+import Cldr, {Clrd} from "../../../../screan/Calendar/Cldr"
 
 
 class OwnProfileDoctor extends Component{
@@ -33,7 +34,11 @@ class OwnProfileDoctor extends Component{
             activeBar:<MyPatientsList listPatients={[{name:"reza",date:"1398/01/02",time:"20:45" ,clinic:"test"},{name:"reza",date:"1398/01/02",time:"3:10",clinic: "tes22"}]} />
         }
     };
-
+    getApp=()=>{
+        const data1 = getAppData();
+        console.log(data1)
+        return data1
+    }
     addClickClinic=()=>{
     //    todo:ad function for post clinic
         this.setState({...this.state,showSide:true})
@@ -186,8 +191,10 @@ class OwnProfileDoctor extends Component{
                                                 className="material-icons">av_timer</i><span>Reserved</span></div>
                                             <div className={this.state.active==='people'?"td active":"td"} onClick={()=>this.toggleActive('people',this.state.myPatient)}><i
                                                 className="material-icons">people</i><span>My Patients</span></div>
-                                            <div className={this.state.active==='photo'?"td active":"td"} onClick={()=>this.toggleActive('photo')}><i
-                                                className="material-icons">photo</i><span>PHOTOS</span></div>
+                                            <div className={this.state.active==='photo'?"td active":"td"} onClick={()=>this.toggleActive('photo', <div className="history">{<Cldr day= {this.getApp()}/>} </div>)}><i
+                                                className="far fa-calendar-check material-icons"></i><span>History</span>
+                                                
+                                            </div>
 
                                             <div className={this.state.active==='archive'?"td active":"td"} onClick={()=>this.toggleActive('archive')}><i
                                                 className="material-icons">archive</i><span>ARCHIVE</span></div>

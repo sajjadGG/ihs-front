@@ -38,6 +38,7 @@ class Card extends React.Component {
     };
     render() {
         const {name,avatar,des}=this.props;
+        const bt = this.props.buttonText ? this.props.buttonText :"Folow"
         console.log(des);
         return (
             <div className="card" ref={this.cardRef}>
@@ -47,7 +48,7 @@ class Card extends React.Component {
                 </div>
                 <div className="content" ref={this.content}  onClick={this.clickCard}>
                     <div className="title">{name}</div>
-                    <div className="sub-title">Html and CSS animation <i className={this.state.more?"fa fa-angle-up down":"fa fa-angle-up up"} />
+                    <div className="sub-title"> <i className={this.state.more?"fa fa-angle-up down":"fa fa-angle-up up"} />
                     </div>
                     <div className="bottom active" ref={this.bottomCard}>
                         <p>
@@ -55,7 +56,7 @@ class Card extends React.Component {
                         </p>
                         <div className='btn-action'>
                             <button>Read more</button>
-                            <button className='follow'>Folow</button>
+                            <button className='follow'>{bt}</button>
                         </div>
 
                     </div>

@@ -17,9 +17,10 @@ const AvatarImage100= (props)=>{
             </div>
         )
     }
+
     return (
         <div className='avatar-card avatar-text' style={ {height: h ,width : h} }>
-            <h3 className='text-avatar'>{name[0]}</h3>
+            <h3 className='text-avatar'>{name ? name[0] : "U"}</h3>
         </div>
     )
 };

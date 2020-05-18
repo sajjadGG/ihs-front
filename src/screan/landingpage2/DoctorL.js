@@ -66,7 +66,7 @@ toggleUserNameDoctor=(userName)=>{
         await setLoginData(dataLogin);
         if(dataLogin.type==="doctor"){
             //todo:redirect in doctor page
-            this.props.history.push("/profielpatient");
+            this.props.history.push("/doctorprofile");
         }
         // setTimeout(()=>{
         //     this.setState({...this.state,showAlertSuccess:!this.state.showAlertSuccess,showAlertSuccessText:""});

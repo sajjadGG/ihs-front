@@ -25,7 +25,7 @@ import Card from "./screan/components/Card/Card";
 import Cldr, {Clrd} from "./screan/Calendar/Cldr"
 
 import SearchedUserView from "./screan/searchedUserView/searchedUserView";
-
+import OwnProfileDoctor from "./screan/Doctor/ownDoctorProfile/ownPageProfile/ownProfile";
 
 // import LandingPage from "./screan/landingPage/landingPage"
 
@@ -54,6 +54,8 @@ ReactDOM.render(
             <Route exact path='/profielpatient' component={OwnProfile}/>
             <Route exact path='/date' component={AppointmentSearch}/>
             <Route exact path='/app'> <AppointmentHistory records = {[{Num:'1', Docter:'محمد', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'انجام شده'},{Num:'2', Docter:'رضا', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا موفق'},{Num:'3', Docter:'حسن', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'رزرو شده'},{Num:'4', Docter:'غلام', Proficiency:'اعصاب' ,AppDate:'۹۹/۱۰/۱۰' ,AppState:'نا مشخص'}]} /></Route>
+            <Route exact path='/doctorprofile' component={OwnProfileDoctor}/>
+        
         </BrowserRouter>
       </Provider>,
   document.getElementById('root')
