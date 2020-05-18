@@ -29,8 +29,6 @@ const store = createStore(combineReducers(Reducer));
 ReactDOM.render(
       <Provider store={store}>
         <BrowserRouter>
-
-        <SideBar/>
             <Route exact path='/' component={App}/>
             {/*<Route exact path='/searchDoctor' component={SearchDoctorPages}/>*/}
             {/* <Route exact path='/2' component={LandingPage}/> */}
