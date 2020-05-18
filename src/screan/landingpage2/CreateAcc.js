@@ -146,7 +146,7 @@ class CreateAcc extends Component{
                         <label htmlFor="name" className="form__label">UserName</label>
                     </div>
                     <div className='items-form'>
-                        <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
+                        <input type={this.state.type} className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordcreate} onChange={this.togglepassword}/>
                         <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
                     </div>{this.ErrorPass}
                     <div className="CheckUser">

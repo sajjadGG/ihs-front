@@ -91,7 +91,7 @@ render(){
                         <label htmlFor="name" className="form__label">UserName</label>
                     </div>
                     <div className='items-form'>
-                        <input type="password" className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordDoctor} onChange={(e)=>this.togglePasswordDoctor(e)}/>
+                        <input type={this.state.type} className="form__field" placeholder="Name" name="name" id='name' required value={this.state.passwordDoctor} onChange={(e)=>this.togglePasswordDoctor(e)}/>
                         <label htmlFor="name" className="form__label">Password</label><i class={this.state.classN} onMouseDown={this.eyefun} onMouseUp={this.eyefun}></i>
                     </div>{this.ErrorPass}
                     <div className="btn1"><button class="btn btn-primary" onClick={this.toggleLoginBtnDoctor} onMouseOver={this.btnMouseOver}>ورود</button></div>
