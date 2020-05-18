@@ -8,7 +8,7 @@ import {getMyAppointment} from "../../api/apiFunction";
 import {withRouter} from "react-router-dom";
 import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
 import QuicMessage from "../components/quickMessage/quickMessage";
-import {updateDataUser} from "../../api/apiFunction";
+import {updateDataUser , putuserData} from "../../api/apiFunction";
 import SideUp from "../components/sideUp/sideUp";
 import Cldr, {Clrd} from "../Calendar/Cldr"
 
@@ -81,10 +81,9 @@ class OwnProfile extends Component{
     };
     updateData=async ()=>{
         const {username}=await getUserData();
+        console.log(username)
+        const data= await putuserData({first_name:this.state.name.split(" ")[0],last_name : this.state.name.split(" ")[1] ,username:username});
 
-        const req= updateDataUser({fullname:"rezx",user:username});
-        req.then((data)=>{
-        }).catch((e)=>console.error(e));
 
     };
     render() {

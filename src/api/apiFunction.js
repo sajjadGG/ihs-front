@@ -74,12 +74,14 @@ export const getuserData = async({username})=>{
 }
 
 export const putuserData = async({username,first_name , last_name , email})=>{
+    console.log("here" + username)
     var myHeaders = new Headers();
-    myHeaders.append("Authorization",Helper.authtype + JSON.parse(localStorage.getItem('token')));
+    myHeaders.append("Authorization",Helper.authtype + localStorage.getItem('token'));
     var formdata = new FormData();
     formdata.append("first_name", first_name);
     formdata.append("last_name", last_name);
-    formdata.append("email", email);
+    if(email !=undefined)
+        formdata.append("email", email);
     var requestOptions = {
     method: 'PUT',
     headers: myHeaders,
@@ -93,9 +95,13 @@ export const putuserData = async({username,first_name , last_name , email})=>{
     return data
 };
 //update user data
-export const updateDataUser=async ({fullname,user})=>{
+export const updateDataUser=async ({firstname , lastname,user})=>{
     const token =await getToken();
+<<<<<<< HEAD
+    const req =axios.put(Helper.registerUrl+user+"/",{
+=======
     const req =await  axios.put(Helper.registerUrl+user,{
+>>>>>>> c08c739c76f51ba314c42da8fc40b09910744e9a
         headers:{
             Authorization:Helper.authtype+token,
         },
