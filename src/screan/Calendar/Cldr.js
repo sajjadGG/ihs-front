@@ -1,4 +1,5 @@
 import React ,{Component, useState , useEffect} from "react"
+import {withRouter} from "react-router-dom";
 import "./Cldr.css"
 
 
@@ -111,4 +112,4 @@ return(
 )
 }
 
-export default Cldr;
+export default withRouter(Cldr);

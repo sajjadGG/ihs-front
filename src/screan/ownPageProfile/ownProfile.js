@@ -4,11 +4,13 @@ import './ownProfileStyle.css'
 import SideBar from "../sideBar/sideBard";
 import AvatarImage from "../../functions/returnElement/returnAvatarPic";
 import {getUserData} from "../../functions/saveDataLocalStorage/localStorageFunction";
+import {getMyAppointment} from "../../api/apiFunction";
 import {withRouter} from "react-router-dom";
 import ListFriendsProfile from "../components/listFriendProfile/listFriendsProfile";
 import QuicMessage from "../components/quickMessage/quickMessage";
 import {updateDataUser} from "../../api/apiFunction";
 import SideUp from "../components/sideUp/sideUp";
+import Cldr, {Clrd} from "../Calendar/Cldr"
 
 class OwnProfile extends Component{
     constructor(props) {
@@ -23,8 +25,10 @@ class OwnProfile extends Component{
             di:true,
             age:19,
             dec:'',
-            test:false
+            test:false,
+            username:""
         }
+        let History=null;
     };
     test1=()=>{
         console.log(this.state)
@@ -32,15 +36,28 @@ class OwnProfile extends Component{
     };
     getData=async ()=>{
         const data =await getUserData();
+        console.log(data)
         if(data){
-            this.setState({...this.state,name:data.full_name,avatar:data.avatar});
+            this.setState({...this.state,name:data.full_name,avatar:data.avatar,username:data.username});
         }
     };
+    getApp= async ()=>{
+        const data1 = await getMyAppointment(this.state.username);
+        console.log(data1 + "dsdvdvddvdv")
+    }
     componentDidMount() {
         this.getData();
+        this.getApp()
     }
     toggleActive=(input)=>{
         this.setState({...this.state,active:input})
+
+        if(input==="history"){
+            this.History = <div className="history">{<Cldr day= {{may8:'at 10:20pm with Dr Karimi' , may10:'at 9:35pm with Dr Rezayi'}}/>} </div>
+        }
+        else{
+            this.History = null
+        }
     };
     changePage=(input)=>{
         this.props.history.push(input)
@@ -196,6 +213,7 @@ class OwnProfile extends Component{
 
                                 </div>
                             </div>
+                            {this.History}
                             <div className="m-mrg" id="composer">
                                 <div id="c-tabs-cvr">
                                     <div className="tb" id="c-tabs">

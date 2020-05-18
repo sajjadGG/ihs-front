@@ -21,7 +21,7 @@ import SideBar from "./screan/sideBar/sideBard";
 import {DoctorClinic} from "./doctorPage/doctorclinic"
 import OwnProfile from "./screan/ownPageProfile/ownProfile";
 import Card from "./screan/components/Card/Card";
-import Clrd from "./screan/Calendar/Cldr"
+import Cldr, {Clrd} from "./screan/Calendar/Cldr"
 // import LandingPage from "./screan/landingPage/landingPage"
 
 
@@ -37,7 +37,7 @@ ReactDOM.render(
             <Route exact path='/searchDoctor' component={SearchDoctor}/>
             <Route exact path='/searchfriend' component={SearchFriend}/>
             <Route exact path='/card' component={Card}/>
-            <Route exact path='/clrd' component={Clrd}/>
+            <Route exact path='/clrd' component={()=><Cldr day= {{may8:'at 10:20pm with Dr Karimi' , may10:'at 9:35pm with Dr Rezayi'}}/>}/>
             <Route exact path='/doctorPage/:id' component={DoctorProfileFromPatient}/>
 
             <Route exact path='/message/:sender/:receiver' component={MessageRoom}/>

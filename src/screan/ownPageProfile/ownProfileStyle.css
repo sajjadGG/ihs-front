@@ -1168,3 +1168,8 @@ opacity: 1;
     }
 
 }
+.history{
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+}
