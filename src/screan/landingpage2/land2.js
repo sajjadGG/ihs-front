@@ -58,7 +58,7 @@ render(){
       {<PatientL history={this.props.history}/>}
     </Tab>
 <Tab  label="CreateAccount" >{<CreateAcc history={this.props.history}/>}</Tab>
-<Tab  label="Docter" >{<DoctorL history={this.props.history}/>}</Tab>
+<Tab  label="Doctor" >{<DoctorL history={this.props.history}/>}</Tab>
 </Tabs>
   </div>
   ;

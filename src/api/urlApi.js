@@ -20,7 +20,8 @@
 // export default Helper
 
 const LOCAL_URL = 'http://localhost:3000/';
-const BASE_URL = 'https://demo2-ihs.herokuapp.com/api/';
+// const BASE_URL = 'https://demo2-ihs.herokuapp.com/api/';
+const BASE_URL = 'http://demo3-ihs.herokuapp.com/api/';
 export const Helper = {
     patientRegister : BASE_URL + 'patients/',
     authorizationUrl : BASE_URL + 'token/',

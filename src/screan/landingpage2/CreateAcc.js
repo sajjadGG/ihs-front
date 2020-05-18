@@ -18,7 +18,7 @@ class CreateAcc extends Component{
             passwordcreate:"",
             usercreate:"",
             emailcreate:"",
-            userType:"",
+            userType:"patinet",
             type:"password",
         classN:"fas fa-eye",
 
